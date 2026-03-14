@@ -1,0 +1,213 @@
+"use client";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import {
+  FaApple,
+  FaGoogle,
+  FaLinkedin,
+  FaMicrosoft,
+  FaTwitter,
+} from "react-icons/fa";
+
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+interface Feature281Props {
+  className?: string;
+}
+
+const Feature281 = ({ className }: Feature281Props) => {
+  return (
+    <section className={cn("h-full w-screen overflow-hidden py-32", className)}>
+      <div className="container flex w-full max-w-6xl flex-col items-center justify-center px-6 md:px-12">
+        <div className="relative flex h-full flex-col items-center justify-center gap-4 text-center">
+          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+            Client Testimonials
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Trusted by organizations across the region for over two decades.
+          </p>
+        </div>
+        <div className="mt-16 flex w-full items-center justify-center">
+          <CardStack items={CARDS} />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export { Feature281 };
+
+export const Highlight = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <motion.span
+      className={cn(
+        "bg-emerald-100 px-1 py-0.5 font-bold text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500",
+        className,
+      )}
+    >
+      {children}
+    </motion.span>
+  );
+};
+
+const CARDS = [
+  {
+    id: 0,
+    name: "Dejan Jovanovski",
+    designation: "CTO, Financial Sector",
+    userImage: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/person1.jpeg",
+    companyIcon: FaMicrosoft,
+    content: (
+      <p>
+        InTec System has been our preferred IT partner for years. Their{" "}
+        <Highlight>expertise in system integration</Highlight> and 24/7 support has been 
+        crucial for our digital transformation journey.
+      </p>
+    ),
+  },
+  {
+    id: 1,
+    name: "Elena Petkovska",
+    designation: "Project Manager",
+    userImage: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/person2.jpeg",
+    companyIcon: FaLinkedin,
+    content: (
+      <p>
+        The software solutions provided by InTec are both{" "}
+        <Highlight>secure and scalable</Highlight>. They truly understand our business needs and turn 
+        complex challenges into seamless workflows.
+      </p>
+    ),
+  },
+  {
+    id: 2,
+    name: "Marko Velkovski",
+    designation: "Operations Director",
+    userImage: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/person3.jpeg",
+    companyIcon: FaGoogle,
+    content: (
+      <p>
+        Reliability is key in our industry. One call to InTec and a{" "}
+        <Highlight>certified technician is always ready</Highlight> to assist. Their 
+        proactive maintenance keeps our operations running 100%.
+      </p>
+    ),
+  },
+  {
+    id: 3,
+    name: "Ivana Stojkovska",
+    designation: "HR & Admin Lead",
+    userImage: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/avatar3.png",
+    companyIcon: FaMicrosoft,
+    content: (
+      <p>
+        Their consultancy services helped us improve our strategy and{" "}
+        <Highlight>boosted our efficiency</Highlight>. They are not just a supplier; they are 
+        trusted advisors in the IT space.
+      </p>
+    ),
+  },
+];
+
+type Card = {
+  id: number;
+  name: string;
+  designation: string;
+  userImage: string;
+  companyIcon: React.ComponentType<{ className?: string }>;
+  content: React.ReactNode;
+};
+
+// Below is the modified component from Aceternity UI
+// Original source: npx shadcn@latest add https://ui.aceternity.com/registry/card-stack.json
+// Modified to follow our coding standards and design system
+// We respect copyright and attribution to the original creators
+
+const CardStack = ({
+  items,
+  offset,
+  scaleFactor,
+}: {
+  items: Card[];
+  offset?: number;
+  scaleFactor?: number;
+}) => {
+  const intervalRef = useRef<NodeJS.Timeout | undefined>(undefined);
+  const CARD_OFFSET = offset || 10;
+  const SCALE_FACTOR = scaleFactor || 0.06;
+  const [cards, setCards] = useState<Card[]>(items);
+
+  const startFlipping = useCallback(() => {
+    intervalRef.current = setInterval(() => {
+      setCards((prevCards: Card[]) => {
+        const newArray = [...prevCards]; // create a copy of the array
+        newArray.unshift(newArray.pop()!); // move the last element to the front
+        return newArray;
+      });
+    }, 5000);
+  }, []);
+
+  useEffect(() => {
+    startFlipping();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [startFlipping]);
+
+  return (
+    <div className="relative h-[280px] w-full max-w-3xl md:h-64">
+      {cards.map((card, index) => {
+        const CompanyIcon = card.companyIcon;
+        return (
+          <motion.div
+            key={card.id}
+            className="absolute flex h-full w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-6 shadow-xl shadow-black/[0.1] dark:border-white/[0.1] dark:bg-black dark:shadow-white/[0.05] md:p-8"
+            style={{
+              transformOrigin: "top center",
+            }}
+            animate={{
+              top: index * -CARD_OFFSET,
+              scale: 1 - index * SCALE_FACTOR, // decrease scale for cards that are behind
+              zIndex: cards.length - index, //  decrease z-index for the cards that are behind
+            }}
+            transition={{
+              duration: 0.5,
+              type: "spring",
+              bounce: 0.3,
+            }}
+          >
+            <div className="font-normal text-neutral-700 dark:text-neutral-200">
+              {card.content}
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Avatar key={index} className="size-12">
+                  <AvatarImage src={card.userImage} alt={card.name} />
+                </Avatar>
+                <div>
+                  <p className="font-medium">{card.name}</p>
+                  <p className="text-muted-foreground/80">{card.designation}</p>
+                </div>
+              </div>
+              <div className="flex size-10 items-center justify-center rounded-full bg-muted-foreground/15">
+                <CompanyIcon className="size-5" />
+              </div>
+            </div>
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+};
