@@ -12,6 +12,7 @@ import {
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 
 interface Feature281Props {
@@ -19,11 +20,29 @@ interface Feature281Props {
 }
 
 const Feature281 = ({ className }: Feature281Props) => {
+  const isMobile = useIsMobile();
+
   return (
-    <section className={cn("h-full w-screen overflow-hidden py-32", className)}>
-      <div className="container flex w-full max-w-6xl flex-col items-center justify-center px-6 md:px-12">
-        <div className="relative flex h-full flex-col items-center justify-center gap-4 text-center">
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+    <section className={cn("relative h-full w-full overflow-hidden py-32", className)}>
+      <div className="absolute top-0 flex size-full justify-center">
+        {Array.from({ length: isMobile ? 7 : 18 }).map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "100%" }}
+            transition={{
+              duration: 0.8,
+              delay: i * 0.05,
+              ease: "easeOut",
+            }}
+            className="w-24 border-l bg-gradient-to-b to-transparent transition-all ease-in-out hover:scale-110 hover:from-black/2"
+          />
+        ))}
+      </div>
+      <div className="relative z-20 mx-auto max-w-[1100px] px-6 flex w-full flex-col">
+        <div className="relative flex flex-col gap-4">
+          <div className="absolute -z-1 size-full max-w-3xl bg-background blur-xl" />
+          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
             Client Testimonials
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -50,7 +69,7 @@ export const Highlight = ({
   return (
     <motion.span
       className={cn(
-        "bg-emerald-100 px-1 py-0.5 font-bold text-emerald-700 dark:bg-emerald-700/[0.2] dark:text-emerald-500",
+        "bg-primary/15 px-1 py-0.5 font-bold text-primary dark:bg-primary/20 dark:text-primary rounded-sm",
         className,
       )}
     >
@@ -167,7 +186,7 @@ const CardStack = ({
   }, [startFlipping]);
 
   return (
-    <div className="relative h-[280px] w-full max-w-3xl md:h-64">
+    <div className="relative h-[280px] w-full md:h-64">
       {cards.map((card, index) => {
         const CompanyIcon = card.companyIcon;
         return (

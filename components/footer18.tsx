@@ -1,12 +1,9 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  ArrowRight,
-  ChevronDown,
   Cookie,
   Facebook,
   Github,
-  Languages,
   Linkedin,
   Twitter,
 } from "lucide-react";
@@ -31,20 +28,9 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
-interface LanguageOption {
-  label: string;
-  description: string;
-  link: string;
-}
 
 interface CookiesOption {
   title: string;
@@ -58,19 +44,7 @@ interface PrivacyDialog {
   text: string;
 }
 
-interface LanguagesSelectProps {
-  languages: Array<LanguageOption>;
-}
-
 const LOGO = "/images/logo.svg";
-
-const LANGUAGES: Array<LanguageOption> = [
-  {
-    label: "English",
-    description: "English (US)",
-    link: "#",
-  },
-];
 
 const COOKIES_OPTIONS: Array<CookiesOption> = [
   {
@@ -204,7 +178,10 @@ const CookiesPanel = ({ cookiesOptions }: CookiesPanelProps) => {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="outline">
+        <Button
+          variant="secondary"
+          className="group flex h-10 w-fit items-center justify-center gap-2 rounded-full px-6 py-1 tracking-tight"
+        >
           <Cookie className="size-4" />
           Cookie settings
         </Button>
@@ -216,7 +193,7 @@ const CookiesPanel = ({ cookiesOptions }: CookiesPanelProps) => {
         >
           <DrawerHeader>
             <div className="flex w-full flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-              <DrawerTitle className="text-sm leading-normal font-normal">
+              <DrawerTitle className="text-sm leading-normal font-normal text-left">
                 We use cookies to enhance your experience. Check our{" "}
                 <Button
                   variant="link"
@@ -227,7 +204,10 @@ const CookiesPanel = ({ cookiesOptions }: CookiesPanelProps) => {
                 for more details.
               </DrawerTitle>
               <DrawerClose asChild className="w-full md:w-fit">
-                <Button type="submit">Done</Button>
+                <Button
+                  type="submit"
+                  className="group flex h-10 w-fit items-center justify-center gap-2 rounded-full px-6 py-1 tracking-tight"
+                >Done</Button>
               </DrawerClose>
             </div>
           </DrawerHeader>
@@ -239,9 +219,9 @@ const CookiesPanel = ({ cookiesOptions }: CookiesPanelProps) => {
                 {cookiesOptions.map((opt) => (
                   <Field
                     key={opt.id}
-                    className="flex w-full items-start justify-between rounded-xl border bg-background p-3"
+                    className="flex w-full items-start justify-between rounded-3xl border bg-background p-5"
                   >
-                    <FieldLabel className="flex w-full flex-col gap-1">
+                    <FieldLabel className="flex w-full flex-col gap-1 text-left">
                       <p className="text-sm leading-normal font-medium text-foreground">
                         {opt.title}
                       </p>
@@ -268,37 +248,6 @@ const CookiesPanel = ({ cookiesOptions }: CookiesPanelProps) => {
         </form>
       </DrawerContent>
     </Drawer>
-  );
-};
-
-const LanguagesSelect = ({ languages }: LanguagesSelectProps) => {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline">
-          <Languages />
-          English
-          <ChevronDown />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" align="start">
-        {languages.map((lang, i) => (
-          <DropdownMenuItem asChild key={`footer-lang-${i}`}>
-            <a
-              href={lang.link}
-              className="flex cursor-pointer flex-col items-start rounded-md px-4 py-2"
-            >
-              <div className="text-base leading-normal text-foreground">
-                {lang.label}
-              </div>
-              <div className="text-sm leading-normal text-muted-foreground">
-                {lang.description}
-              </div>
-            </a>
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
   );
 };
 
@@ -344,7 +293,6 @@ const Footer18 = ({ className }: Footer18Props) => {
             <div className="flex w-full flex-col gap-6">
               <div className="mt-4 flex flex-col items-start gap-2">
                 <CookiesPanel cookiesOptions={COOKIES_OPTIONS} />
-                <LanguagesSelect languages={LANGUAGES} />
               </div>
             </div>
           </div>

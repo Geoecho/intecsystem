@@ -34,6 +34,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <ThemeReset />
+        <div className="fixed top-0 left-0 z-40 h-24 w-full bg-gradient-to-b from-background to-transparent pointer-events-none lg:h-32" />
         <main className="flex-1">
           {children}
         </main>

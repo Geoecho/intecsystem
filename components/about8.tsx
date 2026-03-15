@@ -13,7 +13,7 @@ interface About8Props {
 
 const About8 = ({ className }: About8Props) => {
   return (
-    <section className={cn("py-32", className)}>
+    <section className={cn("pb-32 pt-0", className)}>
       {/* About Company Hero */}
       <section className="relative container max-w-6xl py-10 md:py-12 lg:py-15">
         <div className="max-w-4xl">
