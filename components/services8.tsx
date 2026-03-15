@@ -138,7 +138,7 @@ const Services8 = ({ className }: Services8Props) => {
   );
 
   return (
-    <section className={cn("py-32", className)}>
+    <section className={cn("pb-32 pt-0", className)}>
       <div className="container w-full">
         <div className="mx-auto w-full max-w-6xl space-y-12">
           <div className="space-y-4 text-center">

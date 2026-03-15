@@ -31,10 +31,10 @@ interface Integration2Props {
 const Integration2 = ({ className }: Integration2Props) => {
   return (
     <section className={cn("py-32 w-full overflow-hidden", className)}>
-      <div className="container px-4 overflow-hidden">
+      <div className="mx-auto max-w-[1100px] px-6 overflow-hidden">
         {/* Heading Section */}
         <div className="flex flex-col items-center justify-center gap-4 text-center px-4">
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
             Trusted by Leading Technology Partners
           </h2>
           <p className="text-xl text-muted-foreground lg:-mt-1 break-words">
@@ -85,8 +85,8 @@ const Integration2 = ({ className }: Integration2Props) => {
         {/* Explore Button */}
         <div className="mt-8 flex justify-center">
           <Button
-            variant="default"
-            className="group flex w-fit items-center justify-center gap-2 rounded-full px-4 py-1 tracking-tight"
+            variant="outline"
+            className="group flex h-10 w-fit items-center justify-center gap-2 rounded-full px-6 py-1 tracking-tight"
           >
             <span>View all partners</span>
             <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />

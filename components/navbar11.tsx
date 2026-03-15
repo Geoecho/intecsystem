@@ -84,8 +84,8 @@ interface MobileNavigationMenuProps {
 const LOGO = {
   url: "/",
   src: "/images/logo.svg",
-  alt: "Intec System",
-  title: "Intec System",
+  alt: "InTec System",
+  title: "InTec System",
 };
 
 const NAVIGATION: MenuItem[] = [
