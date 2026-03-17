@@ -85,6 +85,7 @@ const LOGO = {
   url: "/",
   src: "/images/logo.svg",
   alt: "InTec System",
+  title: "InTec System",
 };
 
 const NAVIGATION: MenuItem[] = [
