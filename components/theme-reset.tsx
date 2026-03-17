@@ -7,7 +7,9 @@ export function ThemeReset() {
     const root = document.documentElement;
     root.classList.remove("dark");
     root.style.colorScheme = "light";
-    localStorage.removeItem("theme");
+    root.style.backgroundColor = "white"; // Aggressive!
+    document.body.style.backgroundColor = "white";
+    localStorage.setItem("theme", "light");
   }, []);
 
   return null;

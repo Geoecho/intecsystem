@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Briefcase, Cloud, Database, FileText, ShieldCheck } from "lucide-react";
+import { ArrowRight, Cpu, Database, Network, Shield, Smartphone } from "lucide-react";
 import { motion } from "motion/react";
 import type { RefObject } from "react";
 import React, { useRef } from "react";
@@ -15,18 +15,15 @@ interface Feature250Props {
 
 const Feature250 = ({ className }: Feature250Props) => {
   return (
-    <section className={cn("py-32", className)}>
+    <section className={cn("py-20 md:py-32", className)}>
       <div className="mx-auto max-w-[1100px] px-6">
         <p className="mx-auto mb-4 max-w-sm text-center text-muted-foreground md:text-xl">
-          Ready to Transform Your Infrastructure?
+          Industrial Technology & Systems
         </p>
         <h1 className="mx-auto -mb-12 max-w-3xl text-center text-4xl font-medium tracking-tighter md:text-6xl lg:mb-5 lg:text-7xl">
-          Let&apos;s Build the Future Together
+          Building the Future Together
         </h1>
-        <div className="relative">
-          <div className="absolute top-1/2 left-1/2 -z-1 size-full max-w-2xl -translate-x-1/2 -translate-y-1/2 bg-background blur-xl" />
-          <AnimatedBeamIllustration />
-        </div>
+        <AnimatedBeamIllustration />
       </div>
     </section>
   );
@@ -55,79 +52,76 @@ function AnimatedBeamIllustration() {
         <div className="relative z-10 flex h-100 w-full items-center justify-center rounded-3xl lg:w-0">
           <div
             ref={div1Ref}
-            className="absolute top-40 left-0 z-10 flex size-18 -translate-y-1/2 items-center justify-center rounded-full bg-background p-1 lg:top-1/2 lg:left-0"
+            className="absolute top-40 left-0 z-10 flex size-18 -translate-y-1/2 items-center justify-center rounded-md bg-white p-1 lg:top-1/2 lg:left-0"
           >
-            <div className="flex size-10 items-center justify-center rounded-lg border border-border bg-background p-[5px]">
-              <div className="flex size-full items-center justify-center rounded-md border border-border bg-muted">
-                <Briefcase size={16} />
+            <div className="flex size-10 items-center justify-center rounded-md border border-border bg-white p-[5px]">
+              <div className="flex size-full items-center justify-center rounded-md border border-border bg-white">
+                <Cpu size={16} />
               </div>
             </div>
           </div>
           <div
             ref={div2Ref}
-            className="absolute top-40 right-0 z-10 flex size-18 -translate-y-1/2 items-center justify-center rounded-full bg-background p-1 lg:top-20 lg:left-20"
+            className="absolute top-40 right-0 z-10 flex size-18 -translate-y-1/2 items-center justify-center rounded-md bg-white p-1 lg:top-20 lg:left-20"
           >
-            <div className="flex size-10 items-center justify-center rounded-lg border border-border bg-background p-[5px]">
-              <div className="flex size-full items-center justify-center rounded-md border border-border bg-muted">
-                <FileText size={16} />
+            <div className="flex size-10 items-center justify-center rounded-md border border-border bg-white p-[5px]">
+              <div className="flex size-full items-center justify-center rounded-md border border-border bg-white">
+                <Database size={16} />
               </div>
             </div>
           </div>
           <div
             ref={div3Ref}
-            className="absolute bottom-0 left-6 z-10 flex size-18 -translate-y-1/2 items-center justify-center rounded-full bg-background p-1 lg:bottom-2 lg:left-20"
+            className="absolute bottom-0 left-6 z-10 flex size-18 -translate-y-1/2 items-center justify-center rounded-md bg-white p-1 lg:bottom-2 lg:left-20"
           >
-            <div className="flex size-10 items-center justify-center rounded-lg border border-border bg-background p-[5px]">
-              <div className="flex size-full items-center justify-center rounded-md border border-border bg-muted">
-                <ShieldCheck size={16} />
+            <div className="flex size-10 items-center justify-center rounded-md border border-border bg-white p-[5px]">
+              <div className="flex size-full items-center justify-center rounded-md border border-border bg-white">
+                <Shield size={16} />
               </div>
             </div>
           </div>
           <div
             ref={div4Ref}
-            className="absolute right-6 bottom-0 z-10 flex size-18 -translate-y-1/2 items-center justify-center rounded-full bg-background p-1 lg:top-0 lg:left-50"
+            className="absolute right-6 bottom-0 z-10 flex size-18 -translate-y-1/2 items-center justify-center rounded-md bg-white p-1 lg:top-0 lg:left-50"
           >
-            <div className="flex size-10 items-center justify-center rounded-lg border border-border bg-background p-[5px]">
-              <div className="flex size-full items-center justify-center rounded-md border border-border bg-muted">
-                <Cloud size={16} />
+            <div className="flex size-10 items-center justify-center rounded-md border border-border bg-white p-[5px]">
+              <div className="flex size-full items-center justify-center rounded-md border border-border bg-white">
+                <Network size={16} />
               </div>
             </div>
           </div>
           <div
             ref={div5Ref}
-            className="absolute top-20 z-10 flex size-18 -translate-y-1/2 items-center justify-center rounded-full bg-background p-1 lg:top-100 lg:left-50"
+            className="absolute top-20 z-10 flex size-18 -translate-y-1/2 items-center justify-center rounded-md bg-white p-1 lg:top-100 lg:left-50"
           >
-            <div className="flex size-10 items-center justify-center rounded-lg border border-border bg-background p-[5px]">
-              <div className="flex size-full items-center justify-center rounded-md border border-border bg-muted">
-                <Database size={16} />
+            <div className="flex size-10 items-center justify-center rounded-md border border-border bg-white p-[5px]">
+              <div className="flex size-full items-center justify-center rounded-md border border-border bg-white">
+                <Smartphone size={16} />
               </div>
             </div>
           </div>
         </div>
         <div
           ref={div6Ref}
-          className="z-10 flex size-32 items-center justify-center rounded-3xl border bg-muted lg:size-42"
+          className="z-10 flex size-32 items-center justify-center rounded-md border bg-white lg:size-42"
         >
           <img
             src="/images/logo.svg"
-            className="size-14 lg:size-18 dark:invert"
-            alt=""
+            className="size-14 lg:size-18"
+            alt="Intec System Logo"
           />
         </div>
-        <div
-          ref={div7Ref}
-          className="z-10 mt-40 flex items-center justify-center lg:mt-0"
+        <Button
+          variant="default"
+          ref={div7Ref as any}
+          className="z-10 mt-40 group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight lg:mt-0"
+          asChild
         >
-          <Button
-            className="group h-10 rounded-full px-6 py-1 tracking-tight"
-            asChild
-          >
-            <a href="/contact">
-              Get Started
-              <ArrowRight className="ml-2 size-5 -rotate-45 transition-all ease-out group-hover:ml-4 group-hover:rotate-0" />
-            </a>
-          </Button>
-        </div>
+          <a href="/contact">
+            <span>Get Started</span>
+            <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
+          </a>
+        </Button>
       </div>
 
       <div className="block lg:hidden">
@@ -137,6 +131,8 @@ function AnimatedBeamIllustration() {
           fromRef={div3Ref}
           toRef={div6Ref}
           reverse={REVERSE}
+          gradientStartColor="#22c55e"
+          gradientStopColor="#22c55e"
         />
         <AnimatedBeam
           duration={DURATION}
@@ -147,6 +143,8 @@ function AnimatedBeamIllustration() {
           fromRef={div1Ref}
           toRef={div6Ref}
           reverse={REVERSE}
+          gradientStartColor="var(--primary)"
+          gradientStopColor="var(--primary)"
         />
         <AnimatedBeam
           duration={DURATION}
@@ -155,6 +153,8 @@ function AnimatedBeamIllustration() {
           toRef={div6Ref}
           direction="vertical"
           reverse={REVERSE}
+          gradientStartColor="#ff4d4d"
+          gradientStopColor="#ff4d4d"
         />
         <AnimatedBeam
           duration={DURATION}
@@ -165,6 +165,8 @@ function AnimatedBeamIllustration() {
           fromRef={div2Ref}
           toRef={div6Ref}
           reverse={!REVERSE}
+          gradientStartColor="#ff4d4d"
+          gradientStopColor="#ff4d4d"
         />
         <AnimatedBeam
           duration={DURATION}
@@ -172,6 +174,8 @@ function AnimatedBeamIllustration() {
           fromRef={div4Ref}
           toRef={div6Ref}
           reverse={!REVERSE}
+          gradientStartColor="var(--primary)"
+          gradientStopColor="var(--primary)"
         />
         <AnimatedBeam
           duration={DURATION}
@@ -180,6 +184,8 @@ function AnimatedBeamIllustration() {
           toRef={div7Ref}
           direction="vertical"
           reverse={REVERSE}
+          gradientStartColor="var(--primary)"
+          gradientStopColor="var(--primary)"
         />
       </div>
 
@@ -190,6 +196,8 @@ function AnimatedBeamIllustration() {
           fromRef={div1Ref}
           toRef={div6Ref}
           reverse={REVERSE}
+          gradientStartColor="var(--primary)"
+          gradientStopColor="var(--primary)"
         />
         <AnimatedBeam
           endYOffset={-30}
@@ -200,6 +208,8 @@ function AnimatedBeamIllustration() {
           fromRef={div2Ref}
           toRef={div6Ref}
           reverse={REVERSE}
+          gradientStartColor="#ff4d4d"
+          gradientStopColor="#ff4d4d"
         />
         <AnimatedBeam
           duration={DURATION}
@@ -209,6 +219,8 @@ function AnimatedBeamIllustration() {
           fromRef={div3Ref}
           toRef={div6Ref}
           reverse={REVERSE}
+          gradientStartColor="#22c55e"
+          gradientStopColor="#22c55e"
         />
         <AnimatedBeam
           duration={DURATION}
@@ -219,6 +231,8 @@ function AnimatedBeamIllustration() {
           fromRef={div4Ref}
           toRef={div6Ref}
           reverse={REVERSE}
+          gradientStartColor="var(--primary)"
+          gradientStopColor="var(--primary)"
         />
 
         <AnimatedBeam
@@ -230,6 +244,8 @@ function AnimatedBeamIllustration() {
           fromRef={div5Ref}
           toRef={div6Ref}
           reverse={REVERSE}
+          gradientStartColor="#ff4d4d"
+          gradientStopColor="#ff4d4d"
         />
         <AnimatedBeam
           duration={DURATION}
@@ -237,6 +253,8 @@ function AnimatedBeamIllustration() {
           fromRef={div6Ref}
           toRef={div7Ref}
           reverse={REVERSE}
+          gradientStartColor="var(--primary)"
+          gradientStopColor="var(--primary)"
         />
       </div>
     </div>
@@ -245,7 +263,6 @@ function AnimatedBeamIllustration() {
 
 /* 
   animated-beam.tsx with direction support.
-  The original code is from https://magicui.design/docs/components/animated-beam which doesn't support vertical animations. This is a modified version of the original code to support that.
 */
 
 export interface AnimatedBeamProps {
@@ -275,15 +292,15 @@ const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
   fromRef,
   toRef,
   curvature = 0,
-  reverse = false, // Include the reverse prop
+  reverse = false, 
   direction = "horizontal",
   duration = Math.random() * 3 + 4,
   delay = 0,
   pathColor = "gray",
   pathWidth = 2,
   pathOpacity = 0.2,
-  gradientStartColor = "var(--primary)",
-  gradientStopColor = "var(--primary)",
+  gradientStartColor = "#ffaa40",
+  gradientStopColor = "#9c40ff",
   startXOffset = 0,
   startYOffset = 0,
   endXOffset = 0,
@@ -293,35 +310,34 @@ const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
   const [pathD, setPathD] = useState("");
   const [svgDimensions, setSvgDimensions] = useState({ width: 0, height: 0 });
 
-  // Calculate the gradient coordinates based on the direction and reverse prop
   const gradientCoordinates =
     direction === "vertical"
       ? reverse
         ? {
-          x1: ["0%", "0%"],
-          x2: ["0%", "0%"],
-          y1: ["90%", "-10%"],
-          y2: ["100%", "0%"],
-        }
+            x1: ["0%", "0%"],
+            x2: ["0%", "0%"],
+            y1: ["90%", "-10%"],
+            y2: ["100%", "0%"],
+          }
         : {
-          x1: ["0%", "0%"],
-          x2: ["0%", "0%"],
-          y1: ["10%", "110%"],
-          y2: ["0%", "100%"],
-        }
+            x1: ["0%", "0%"],
+            x2: ["0%", "0%"],
+            y1: ["10%", "110%"],
+            y2: ["0%", "100%"],
+          }
       : reverse
         ? {
-          x1: ["90%", "-10%"],
-          x2: ["100%", "0%"],
-          y1: ["0%", "0%"],
-          y2: ["0%", "0%"],
-        }
+            x1: ["90%", "-10%"],
+            x2: ["100%", "0%"],
+            y1: ["0%", "0%"],
+            y2: ["0%", "0%"],
+          }
         : {
-          x1: ["10%", "110%"],
-          x2: ["0%", "100%"],
-          y1: ["0%", "0%"],
-          y2: ["0%", "0%"],
-        };
+            x1: ["10%", "110%"],
+            x2: ["0%", "100%"],
+            y1: ["0%", "0%"],
+            y2: ["0%", "0%"],
+          };
 
   useEffect(() => {
     const updatePath = () => {
@@ -346,34 +362,31 @@ const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
         let d: string;
         if (direction === "vertical") {
           const controlX = startX - curvature;
-          d = `M ${startX},${startY} Q ${controlX},${(startY + endY) / 2
-            } ${endX},${endY}`;
+          d = `M ${startX},${startY} Q ${controlX},${
+            (startY + endY) / 2
+          } ${endX},${endY}`;
         } else {
           const controlY = startY - curvature;
-          d = `M ${startX},${startY} Q ${(startX + endX) / 2
-            },${controlY} ${endX},${endY}`;
+          d = `M ${startX},${startY} Q ${
+            (startX + endX) / 2
+          },${controlY} ${endX},${endY}`;
         }
         setPathD(d);
       }
     };
 
-    // Initialize ResizeObserver
     const resizeObserver = new ResizeObserver((entries) => {
-      // For all entries, recalculate the path
       for (const _ of entries) {
         updatePath();
       }
     });
 
-    // Observe the container element
     if (containerRef.current) {
       resizeObserver.observe(containerRef.current);
     }
 
-    // Call the updatePath initially to set the initial path
     updatePath();
 
-    // Clean up the observer on component unmount
     return () => {
       resizeObserver.disconnect();
     };

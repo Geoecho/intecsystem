@@ -23,29 +23,13 @@ const Feature281 = ({ className }: Feature281Props) => {
   const isMobile = useIsMobile();
 
   return (
-    <section className={cn("relative h-full w-full overflow-hidden py-32", className)}>
-      <div className="absolute top-0 flex size-full justify-center">
-        {Array.from({ length: isMobile ? 7 : 18 }).map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100%" }}
-            transition={{
-              duration: 0.8,
-              delay: i * 0.05,
-              ease: "easeOut",
-            }}
-            className="w-24 border-l bg-gradient-to-b to-transparent transition-all ease-in-out hover:scale-110 hover:from-black/2"
-          />
-        ))}
-      </div>
+    <section className={cn("relative h-full w-full overflow-hidden py-20 md:py-32", className)}>
       <div className="relative z-20 mx-auto max-w-[1100px] px-6 flex w-full flex-col">
-        <div className="relative flex flex-col gap-4">
-          <div className="absolute -z-1 size-full max-w-3xl bg-background blur-xl" />
+        <div className="relative flex flex-col gap-4 text-center items-center">
           <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
             Client Testimonials
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="max-w-2xl text-lg text-muted-foreground">
             Trusted by organizations across the region for over two decades.
           </p>
         </div>
@@ -192,7 +176,7 @@ const CardStack = ({
         return (
           <motion.div
             key={card.id}
-            className="absolute flex h-full w-full flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-6 shadow-xl shadow-black/[0.1] dark:border-white/[0.1] dark:bg-black dark:shadow-white/[0.05] md:p-8"
+            className="absolute flex h-full w-full flex-col justify-between rounded-md border border-neutral-200 bg-white p-6 shadow-xl shadow-black/[0.1] dark:border-white/[0.1] dark:bg-black dark:shadow-white/[0.05] md:p-8"
             style={{
               transformOrigin: "top center",
             }}
@@ -220,7 +204,7 @@ const CardStack = ({
                   <p className="text-muted-foreground/80">{card.designation}</p>
                 </div>
               </div>
-              <div className="flex size-10 items-center justify-center rounded-full bg-muted-foreground/15">
+              <div className="flex size-10 items-center justify-center rounded-md border border-border bg-transparent">
                 <CompanyIcon className="size-5" />
               </div>
             </div>
