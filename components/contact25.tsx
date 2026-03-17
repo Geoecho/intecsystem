@@ -164,7 +164,7 @@ const Contact25 = ({
                     )}
                   >
                     <p className="text-sm font-medium text-green-600 dark:text-green-400">
-                      Thank you! We'll get back to you soon.
+                      Thank you! We&apos;ll get back to you soon.
                     </p>
                   </div>
                 )}

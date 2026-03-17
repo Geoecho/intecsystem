@@ -96,6 +96,7 @@ const Footer18 = ({ className }: Footer18Props) => {
       <footer className="container max-w-6xl">
         <nav className="flex flex-col gap-[2.25rem] lg:flex-row">
           <div className="flex w-full flex-col gap-9 lg:w-1/4">
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a href="/">
               <img
                 src={LOGO}

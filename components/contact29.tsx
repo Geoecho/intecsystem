@@ -177,7 +177,7 @@ const Contact29 = ({
             </div>
             <h2 className="mb-4 text-4xl font-medium">Message Sent!</h2>
             <p className="text-xl text-muted-foreground">
-              Thanks for reaching out. We'll review your request and get back to
+              Thanks for reaching out. We&apos;ll review your request and get back to
               you within one business day.
             </p>
             <Button
@@ -283,7 +283,7 @@ const Contact29 = ({
                 Tell Us More
               </h1>
               <p className="mb-12 text-lg text-muted-foreground">
-                Share the details of your project and we'll get back to you
+                Share the details of your project and we&apos;ll get back to you
                 within 24 hours.
               </p>
 
