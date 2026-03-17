@@ -42,7 +42,7 @@ function AnimatedBeamIllustration() {
   const div4Ref = useRef<HTMLDivElement>(null);
   const div5Ref = useRef<HTMLDivElement>(null);
   const div6Ref = useRef<HTMLDivElement>(null);
-  const div7Ref = useRef<HTMLDivElement>(null);
+  const div7Ref = useRef<HTMLButtonElement>(null);
   return (
     <div
       className="relative flex w-full items-center justify-center overflow-hidden p-10"
@@ -113,7 +113,7 @@ function AnimatedBeamIllustration() {
         </div>
         <Button
           variant="default"
-          ref={div7Ref as any}
+          ref={div7Ref}
           className="z-10 mt-40 group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight lg:mt-0"
           asChild
         >

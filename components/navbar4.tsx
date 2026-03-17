@@ -272,6 +272,7 @@ const Navbar4 = ({ className }: Navbar4Props) => {
       <div className="container">
         <NavigationMenu className="min-w-full [&>div:last-child]:left-auto">
           <div className="flex w-full justify-between gap-2 py-4">
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a
               href="/"
               className="flex items-center gap-2"
