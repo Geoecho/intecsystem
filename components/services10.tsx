@@ -74,27 +74,14 @@ const Services10 = ({ className }: Services10Props) => {
   ];
 
   return (
-    <section className={cn("relative overflow-hidden py-32", className)}>
-      {/* Hero-style animated background lines */}
-      <div className="absolute top-0 flex size-full justify-center">
-        {Array.from({ length: isMobile ? 7 : 18 }).map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100%" }}
-            transition={{ duration: 0.8, delay: i * 0.05, ease: "easeOut" }}
-            className="w-24 border-l bg-gradient-to-b to-transparent transition-all ease-in-out hover:scale-110 hover:from-black/2"
-          />
-        ))}
-      </div>
+    <section className={cn("relative overflow-hidden py-20 md:py-32", className)}>
       <div className="relative z-20 mx-auto max-w-[1100px] px-6">
         <div className="relative space-y-16">
-          <div className="absolute -z-1 inset-0 w-full bg-background blur-3xl pointer-events-none" />
-          <div className="relative space-y-4 text-center">
+          <div className="relative space-y-4 text-left">
             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
               Our Services
             </h2>
-            <p className="mx-auto max-w-2xl text-lg tracking-tight text-muted-foreground md:text-xl">
+            <p className="max-w-2xl text-lg tracking-tight text-muted-foreground md:text-xl">
               World-class digital solutions tailored to your specific business needs and growth objectives.
             </p>
           </div>
@@ -103,11 +90,11 @@ const Services10 = ({ className }: Services10Props) => {
             {services.map((service, index) => (
               <TiltCard
                 key={index}
-                className="relative overflow-hidden rounded-3xl border border-border bg-background/80 p-8 backdrop-blur-sm"
+                className="relative overflow-hidden rounded-md border border-border bg-background/80 p-8 backdrop-blur-sm"
               >
                 <div className="flex h-full flex-col items-start justify-between gap-4 text-left">
                   <div className="w-full">
-                    <div className="rounded-lg bg-primary/10 p-3 text-primary w-fit">
+                    <div className="text-primary">
                       {service.icon}
                     </div>
                     <h3 className="mt-4 text-xl font-semibold">
@@ -119,7 +106,7 @@ const Services10 = ({ className }: Services10Props) => {
                   </div>
                   <Button
                     variant="outline"
-                    className="group mt-2 flex h-10 w-fit items-center justify-center gap-2 rounded-full px-6 py-1 tracking-tight"
+                    className="group mt-2 flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight"
                     asChild
                   >
                     <a href="/contact">

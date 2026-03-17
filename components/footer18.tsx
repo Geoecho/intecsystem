@@ -1,68 +1,14 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  Cookie,
   Facebook,
   Github,
   Linkedin,
   Twitter,
 } from "lucide-react";
-import { Controller, useForm } from "react-hook-form";
-import { z } from "zod";
-
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
-import { Field, FieldLabel } from "@/components/ui/field";
-import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
 
-interface CookiesOption {
-  title: string;
-  description: string;
-  id: string;
-}
-
-interface PrivacyDialog {
-  trigger: string;
-  title: string;
-  text: string;
-}
-
 const LOGO = "/images/logo.svg";
-
-const COOKIES_OPTIONS: Array<CookiesOption> = [
-  {
-    id: "1",
-    title: "Essential for functionality",
-    description: "Necessary for site functionality. Always enabled.",
-  },
-  {
-    id: "2",
-    title: "Functional",
-    description: "Stores preferences and enables enhanced features.",
-  },
-  {
-    id: "3",
-    title: "Analytics",
-    description: "Tracks usage to enhance your experience.",
-  },
-];
 
 const NAVIGATION = [
   {
@@ -140,138 +86,6 @@ const NAVIGATION = [
 ];
 
 
-const PRIVACY_DIALOG: PrivacyDialog = {
-  trigger: "Do Not Sell or Share My Info",
-  title:
-    "You've chosen to opt out of sharing your information with our online advertising partners.",
-  text: `
-    Our app enables partners to use cookies and pixels to
-    collect data, helping deliver more relevant ads and
-    track ad performance. These practices may be classified
-    as "selling" or "sharing/processing" for targeted
-    advertising under applicable laws. Even if you opt out,
-    you may still see ads about our app, but they won't be
-    as personalized.
-  `,
-};
-
-const FormSchema = z.object({
-  cookies: z.array(z.string()).refine((value) => value.some((item) => item), {
-    message: "",
-  }),
-});
-
-interface CookiesPanelProps {
-  cookiesOptions: Array<CookiesOption>;
-}
-const CookiesPanel = ({ cookiesOptions }: CookiesPanelProps) => {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      cookies: ["1"],
-    },
-  });
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data.cookies);
-  }
-  return (
-    <Drawer>
-      <DrawerTrigger asChild>
-        <Button
-          variant="secondary"
-          className="group flex h-10 w-fit items-center justify-center gap-2 rounded-full px-6 py-1 tracking-tight"
-        >
-          <Cookie className="size-4" />
-          Cookie settings
-        </Button>
-      </DrawerTrigger>
-      <DrawerContent>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="container overflow-auto pb-4"
-        >
-          <DrawerHeader>
-            <div className="flex w-full flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-              <DrawerTitle className="text-sm leading-normal font-normal text-left">
-                We use cookies to enhance your experience. Check our{" "}
-                <Button
-                  variant="link"
-                  className="px-0 text-sm leading-normal font-normal underline"
-                >
-                  Cookie Notice
-                </Button>{" "}
-                for more details.
-              </DrawerTitle>
-              <DrawerClose asChild className="w-full md:w-fit">
-                <Button
-                  type="submit"
-                  className="group flex h-10 w-fit items-center justify-center gap-2 rounded-full px-6 py-1 tracking-tight"
-                >Done</Button>
-              </DrawerClose>
-            </div>
-          </DrawerHeader>
-          <Controller
-            control={form.control}
-            name="cookies"
-            render={({ field }) => (
-              <Field className="grid gap-5 pt-4 lg:grid-cols-4">
-                {cookiesOptions.map((opt) => (
-                  <Field
-                    key={opt.id}
-                    className="flex w-full items-start justify-between rounded-3xl border bg-background p-5"
-                  >
-                    <FieldLabel className="flex w-full flex-col gap-1 text-left">
-                      <p className="text-sm leading-normal font-medium text-foreground">
-                        {opt.title}
-                      </p>
-                      <p className="text-sm leading-normal text-muted-foreground">
-                        {opt.description}
-                      </p>
-                    </FieldLabel>
-                    <Switch
-                      checked={field.value?.includes(opt.id)}
-                      disabled={opt.id == "1"}
-                      onCheckedChange={(checked) => {
-                        return checked
-                          ? field.onChange([...field.value, opt.id])
-                          : field.onChange(
-                              field.value?.filter((value) => value !== opt.id),
-                            );
-                      }}
-                    />
-                  </Field>
-                ))}
-              </Field>
-            )}
-          />
-        </form>
-      </DrawerContent>
-    </Drawer>
-  );
-};
-
-const PrivacyDialog = ({ trigger, title, text }: PrivacyDialog) => {
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">{trigger}</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[26.5625rem]">
-        <DialogHeader>
-          <DialogTitle className="leading-normal">{title}</DialogTitle>
-          <DialogDescription className="leading-normal">
-            {text}
-          </DialogDescription>
-        </DialogHeader>
-        <DialogClose asChild>
-          <Button variant="outline">Okay</Button>
-        </DialogClose>
-      </DialogContent>
-    </Dialog>
-  );
-};
-
 interface Footer18Props {
   className?: string;
 }
@@ -291,9 +105,6 @@ const Footer18 = ({ className }: Footer18Props) => {
               />
             </a>
             <div className="flex w-full flex-col gap-6">
-              <div className="mt-4 flex flex-col items-start gap-2">
-                <CookiesPanel cookiesOptions={COOKIES_OPTIONS} />
-              </div>
             </div>
           </div>
           <div className="grid w-full grid-cols-1 gap-10 lg:grid-cols-4">

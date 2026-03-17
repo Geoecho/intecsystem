@@ -51,19 +51,19 @@ const Stats15 = ({ className }: Stats15Props) => {
   const years = Object.keys(Stats).map(Number);
 
   return (
-    <section className={cn("py-32", className)}>
-      <div className="mx-auto max-w-[1100px] px-6 flex flex-col md:flex-row">
-        <div className="z-10 md:flex-1">
+    <section className={cn("py-20 md:py-32", className)}>
+      <div className="mx-auto max-w-[1100px] px-6 flex flex-col md:flex-row-reverse gap-8 lg:gap-16">
+        <div className="z-10 md:flex-1 flex flex-col items-end text-right">
           <h2 className="max-w-xl text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
             Numbers that speak for themselves
           </h2>
           <p className="mt-4 max-w-xl text-muted-foreground/80">
             Over two decades of delivering reliable digital infrastructure and security solutions across Africa and beyond.
           </p>
-          <div className="my-10 flex gap-4">
+          <div className="my-10 flex gap-4 justify-end">
             <Button
               variant="outline"
-              className="text-md group flex w-fit items-center justify-center gap-2 rounded-full px-4 py-1 tracking-tight"
+              className="text-md group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight"
               asChild
             >
               <a href="/about">
@@ -73,7 +73,7 @@ const Stats15 = ({ className }: Stats15Props) => {
             </Button>
             <Button
               variant="default"
-              className="text-md group flex w-fit items-center justify-center gap-2 rounded-full px-4 py-1 tracking-tight"
+              className="text-md group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight"
               asChild
             >
               <a href="/contact">
@@ -87,7 +87,7 @@ const Stats15 = ({ className }: Stats15Props) => {
             className="mt-12 flex max-w-3xl flex-col items-end bg-background md:mt-32 xl:bg-transparent"
           >
             <div className="mt-auto mb-10 grid w-full grid-cols-2 gap-4 md:grid-cols-4">
-              <div className="w-full text-left">
+              <div className="w-full text-right">
                 <h3 className="text-4xl font-medium lg:text-5xl">
                   <NumberFlow
                     value={Stats[selectedYear as keyof typeof Stats].YearsInBusiness}
@@ -95,10 +95,10 @@ const Stats15 = ({ className }: Stats15Props) => {
                   />
                 </h3>
                 <p className="text-sm whitespace-pre text-muted-foreground/70">
-                  {" "}Years of Business{" "}
+                  {" "}Years in Business{" "}
                 </p>
               </div>
-              <div className="w-full text-left">
+              <div className="w-full text-right">
                 <h3 className="text-4xl font-medium lg:text-5xl">
                   <NumberFlow
                     value={Stats[selectedYear as keyof typeof Stats].Professionals}
@@ -109,7 +109,7 @@ const Stats15 = ({ className }: Stats15Props) => {
                   {" "}Professionals{" "}
                 </p>
               </div>
-              <div className="w-full text-left">
+              <div className="w-full text-right">
                 <h3 className="text-4xl font-medium lg:text-5xl">
                   <NumberFlow
                     value={Stats[selectedYear as keyof typeof Stats].Projects}
@@ -120,7 +120,7 @@ const Stats15 = ({ className }: Stats15Props) => {
                   {" "}Successful Projects{" "}
                 </p>
               </div>
-              <div ref={IllustrationRef} className="w-full text-left">
+              <div ref={IllustrationRef} className="w-full text-right">
                 <h3 className="text-4xl font-medium lg:text-5xl">
                   <NumberFlow
                     value={Stats[selectedYear as keyof typeof Stats].SupportAvailability}
@@ -134,15 +134,16 @@ const Stats15 = ({ className }: Stats15Props) => {
             </div>
           </div>
         </div>
-        <div className="relative flex w-fit flex-row flex-wrap gap-2 md:mt-42 md:flex-col">
+
+        <div className="relative flex w-full justify-end flex-row flex-wrap gap-2 md:mt-42 md:w-fit md:flex-col md:justify-start">
           {years.map((year) => (
             <div key={year} className="group">
               <button
                 onClick={() => setSelectedYear(year)}
-                className={`relative rounded-full px-4 py-1 text-sm transition-all ease-out ${
+                className={`relative rounded-md px-4 py-1 text-sm transition-all ease-out ${
                   selectedYear === year
-                    ? "bg-primary text-primary-foreground md:-translate-x-8"
-                    : "bg-muted/70 group-hover:-translate-x-4 group-hover:bg-muted"
+                    ? "bg-primary text-primary-foreground md:translate-x-8"
+                    : "bg-muted/70 group-hover:translate-x-4 group-hover:bg-muted"
                 }`}
               >
                 {year} - {year + 1}

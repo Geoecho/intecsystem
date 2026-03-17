@@ -85,7 +85,6 @@ const LOGO = {
   url: "/",
   src: "/images/logo.svg",
   alt: "InTec System",
-  title: "InTec System",
 };
 
 const NAVIGATION: MenuItem[] = [
@@ -313,7 +312,7 @@ const Navbar11 = ({ className }: Navbar11Props) => {
               {DESKTOP_BUTTONS.map((btn, index) => (
                 <Button
                   variant={!btn.isPrimary ? "secondary" : "default"}
-                  className="group flex w-fit items-center justify-center gap-2 rounded-full px-4 py-1 tracking-tight"
+                  className="group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight"
                   asChild
                   key={`navbar-btn-${index}`}
                 >
