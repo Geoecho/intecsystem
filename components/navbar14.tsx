@@ -380,10 +380,10 @@ const Navbar14 = ({
                 <a href={auth.login.href}>{auth.login.label}</a>
               </Button>
             )}
-            <Button className="group h-10 w-fit items-center justify-center gap-2 rounded-full border-2 border-primary bg-primary px-6 text-sm font-semibold tracking-tight text-primary-foreground shadow-lg transition-all hover:bg-transparent hover:text-primary" asChild>
+            <Button className="group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight" asChild>
               <a href={auth.signup.href}>
                 <span>Send Message</span>
-                <ArrowRight className="size-4 -rotate-45 transition-all duration-300 group-hover:rotate-0" />
+                <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
               </a>
             </Button>
           </div>

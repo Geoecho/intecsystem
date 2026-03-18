@@ -34,11 +34,11 @@ const Banner5 = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "fixed bottom-4 left-0 right-0 z-[100] mx-auto max-w-5xl px-4",
+        "fixed bottom-4 left-0 right-0 z-[100] mx-auto max-w-7xl px-4 md:px-8",
         className,
       )}
     >
-      <div className="w-full rounded-xl border-2 border-border bg-background/90 p-4 shadow-lg backdrop-blur-sm">
+      <div className="w-full rounded-xl border border-border bg-background/90 p-4 shadow-lg backdrop-blur-sm">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-start gap-3">
             <Cookie className="mt-0.5 size-5 shrink-0 text-primary" />

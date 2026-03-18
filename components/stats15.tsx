@@ -52,15 +52,15 @@ const Stats15 = ({ className }: Stats15Props) => {
 
   return (
     <section className={cn("py-20 md:py-32", className)}>
-      <div className="mx-auto max-w-[1100px] px-6 flex flex-col md:flex-row-reverse gap-8 lg:gap-16">
-        <div className="z-10 md:flex-1 flex flex-col items-end text-right">
+      <div className="mx-auto max-w-[1100px] px-6 flex flex-col items-center gap-8 lg:gap-16">
+        <div className="z-10 flex flex-col items-center text-center">
           <h2 className="max-w-xl text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
             Numbers that speak for themselves
           </h2>
           <p className="mt-4 max-w-xl text-muted-foreground/80">
             Over two decades of delivering reliable digital infrastructure and security solutions across Africa and beyond.
           </p>
-          <div className="my-10 flex gap-4 justify-end">
+          <div className="my-10 flex flex-wrap gap-4 justify-center">
             <Button
               variant="outline"
               className="text-md group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight"
@@ -84,50 +84,50 @@ const Stats15 = ({ className }: Stats15Props) => {
           </div>
           <div
             ref={ref}
-            className="mt-12 flex max-w-3xl flex-col items-end bg-background md:mt-32 xl:bg-transparent"
+            className="mt-12 flex w-full max-w-3xl flex-col items-center bg-background md:mt-16 xl:bg-transparent"
           >
-            <div className="mt-auto mb-10 grid w-full grid-cols-2 gap-4 md:grid-cols-4">
-              <div className="w-full text-right">
+            <div className="mt-auto mb-10 grid w-full grid-cols-2 gap-8 md:grid-cols-4 md:gap-4">
+              <div className="w-full text-center">
                 <h3 className="text-4xl font-medium lg:text-5xl">
                   <NumberFlow
                     value={Stats[selectedYear as keyof typeof Stats].YearsInBusiness}
                     suffix="+"
                   />
                 </h3>
-                <p className="text-sm whitespace-pre text-muted-foreground/70">
+                <p className="mt-2 text-sm whitespace-pre text-muted-foreground/70">
                   {" "}Years in Business{" "}
                 </p>
               </div>
-              <div className="w-full text-right">
+              <div className="w-full text-center">
                 <h3 className="text-4xl font-medium lg:text-5xl">
                   <NumberFlow
                     value={Stats[selectedYear as keyof typeof Stats].Professionals}
                     suffix="+"
                   />
                 </h3>
-                <p className="text-sm whitespace-pre text-muted-foreground/70">
+                <p className="mt-2 text-sm whitespace-pre text-muted-foreground/70">
                   {" "}Professionals{" "}
                 </p>
               </div>
-              <div className="w-full text-right">
+              <div className="w-full text-center">
                 <h3 className="text-4xl font-medium lg:text-5xl">
                   <NumberFlow
                     value={Stats[selectedYear as keyof typeof Stats].Projects}
                     suffix="+"
                   />
                 </h3>
-                <p className="text-sm whitespace-pre text-muted-foreground/70">
+                <p className="mt-2 text-sm whitespace-pre text-muted-foreground/70">
                   {" "}Successful Projects{" "}
                 </p>
               </div>
-              <div ref={IllustrationRef} className="w-full text-right">
+              <div ref={IllustrationRef} className="w-full text-center">
                 <h3 className="text-4xl font-medium lg:text-5xl">
                   <NumberFlow
                     value={Stats[selectedYear as keyof typeof Stats].SupportAvailability}
                     suffix="/7"
                   />
                 </h3>
-                <p className="text-sm whitespace-pre text-muted-foreground/70">
+                <p className="mt-2 text-sm whitespace-pre text-muted-foreground/70">
                   {" "}Customer Support{" "}
                 </p>
               </div>
@@ -135,15 +135,15 @@ const Stats15 = ({ className }: Stats15Props) => {
           </div>
         </div>
 
-        <div className="relative flex w-full justify-end flex-row flex-wrap gap-2 md:mt-42 md:w-fit md:flex-col md:justify-start">
+        <div className="relative flex w-full justify-center flex-row flex-wrap gap-2 md:w-fit md:flex-row">
           {years.map((year) => (
             <div key={year} className="group">
               <button
                 onClick={() => setSelectedYear(year)}
                 className={`relative rounded-md px-4 py-1 text-sm transition-all ease-out ${
                   selectedYear === year
-                    ? "bg-primary text-primary-foreground md:translate-x-8"
-                    : "bg-muted/70 group-hover:translate-x-4 group-hover:bg-muted"
+                    ? "bg-primary text-primary-foreground md:-translate-y-1"
+                    : "bg-muted/70 hover:-translate-y-1 hover:bg-muted"
                 }`}
               >
                 {year} - {year + 1}
