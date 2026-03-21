@@ -51,10 +51,10 @@ const Hero232 = ({ className }: Hero232Props) => {
             Over two decades of delivering reliable digital infrastructure, 
             cutting-edge security, and seamless system integration solutions.
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex w-full max-w-md flex-col sm:flex-row gap-4">
             <Button
               variant="default"
-              className="text-md group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight"
+              className="text-md group flex h-12 w-full sm:flex-1 items-center justify-center gap-2 rounded-md px-8 text-base tracking-tight"
               asChild
             >
               <a href="/contact">
@@ -64,7 +64,7 @@ const Hero232 = ({ className }: Hero232Props) => {
             </Button>
             <Button
               variant="outline"
-              className="text-md group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight"
+              className="text-md group flex h-12 w-full sm:flex-1 items-center justify-center gap-2 rounded-md px-8 text-base tracking-tight"
               asChild
             >
               <a href="/about">

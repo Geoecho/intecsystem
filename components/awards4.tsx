@@ -61,7 +61,7 @@ const Awards4 = ({ className }: Awards4Props) => {
       <div className="relative z-20 mx-auto max-w-[1100px] px-6">
         <div className="relative space-y-16">
         <div className="relative flex flex-col gap-4 text-right items-end">
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Certifications">
             Certifications
           </h2>
           <p className="text-lg text-muted-foreground">

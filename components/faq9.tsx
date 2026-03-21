@@ -43,8 +43,8 @@ const Faq9 = ({ className }: Faq9Props) => {
     <section className={cn("py-20 md:py-32", className)}>
       <div className="mx-auto max-w-[1100px] px-6">
         <div className="mb-12 flex flex-col items-start text-left gap-4">
-          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
-            Frequently Asked Questions
+          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Questions?">
+            Questions?
           </h2>
           <p className="max-w-2xl text-lg tracking-tight text-muted-foreground md:text-xl">
             Find answers to common questions about our industrial technology services and solutions.
