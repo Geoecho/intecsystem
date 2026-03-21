@@ -20,6 +20,10 @@ import {
   Wrench,
   Smartphone as PhoneIcon,
   ChevronRight,
+  HardDrive,
+  FileSearch,
+  BookOpen,
+  Search as SearchIcon,
 } from "lucide-react";
 import { type LucideIcon } from "lucide-react";
 import { useState } from "react";
@@ -137,7 +141,7 @@ const Navbar14 = ({
               icon: Briefcase,
             },
             {
-              title: "Document Management",
+              title: "Document Management Services",
               description: "Transition to paperless easily",
               href: "/services/document-management",
               icon: FileText,
@@ -148,29 +152,88 @@ const Navbar14 = ({
           label: "Automation & Dev",
           items: [
             {
-              title: "Workflow Automation",
+              title: "Workflow Automation Services",
               description: "Optimize operations and data",
               href: "/services/workflow-automation",
               icon: RefreshCw,
             },
             {
-              title: "Software & Recovery",
+              title: "Custom Software Development",
               description: "Bespoke solutions and continuity",
               href: "/services/custom-software",
               icon: Code,
             },
+            {
+              title: "Suscriptor Portfolio Development",
+              description: "Document workflow automation",
+              href: "/services/suscriptor",
+              icon: FileSearch,
+            },
+          ],
+        },
+        {
+          label: "Analysis & Recovery",
+          items: [
+            {
+              title: "Business Analysis Services",
+              description: "Align business goals to IT",
+              href: "/services/business-analysis",
+              icon: Search,
+            },
+            {
+              title: "Digitalization Services",
+              description: "Document conversion at scale",
+              href: "/services/digitalization",
+              icon: BookOpen,
+            },
+            {
+              title: "Backup and Disaster Recovery",
+              description: "Business continuity planning",
+              href: "/services/backup-recovery",
+              icon: HardDrive,
+            },
+          ],
+        },
+        {
+          label: "Discovery",
+          items: [
+            {
+              title: "View All Services",
+              description: "Explore our full range of enterprise offerings",
+              href: "/services",
+              icon: Globe,
+            },
           ],
         },
       ],
-      featured: {
-        title: "Digital Transformation",
-        description: "Transforming industries with smart technology.",
-        href: "/services",
-        image: {
-          src: "/images/bg.jpg",
-          alt: "InTec System",
+    },
+    {
+      label: "Solutions",
+      sections: [
+        {
+          label: "Core Solutions",
+          items: [
+            {
+              title: "SecurePlus Fraud Shield",
+              description: "Your strongest defense against modern financial fraud",
+              href: "/solutions/secureplus",
+              icon: ShieldCheck,
+            },
+            {
+              title: "Cyber Security Solutions",
+              description: "Establishing secure frameworks for increased network sensitivity and visibility",
+              href: "/solutions/cyber-security",
+              icon: ShieldCheck,
+            },
+            {
+              title: "Hyper-Converged Infrastructure Solutions",
+              description: "Software-centric architecture that integrates compute, storage, networking and virtualization",
+              href: "/solutions/hci",
+              icon: Database,
+            },
+          ],
         },
-      },
+      ],
     },
     {
       label: "Company",
@@ -185,25 +248,17 @@ const Navbar14 = ({
               href: "/about",
             },
             {
-              title: "News",
+              title: "News & Events",
               description: "Latest updates and announcements",
               icon: FileText,
               href: "/news",
             },
           ],
         },
-        {
-          label: "Engagement",
-          items: [
-            { title: "Events", icon: Globe, href: "/events" },
-            { title: "Contacts", icon: PhoneIcon, href: "/contact" },
-          ],
-        },
       ],
     },
   ],
   links = [
-    { label: "Solutions", href: "/solutions" },
     { label: "Partners", href: "/partners" },
   ],
   auth = {
@@ -238,23 +293,23 @@ const Navbar14 = ({
 
           <div className="hidden flex-1 items-center justify-center lg:flex">
             <NavigationMenu>
-                <NavigationMenuList>
-                  {menus.map((menu) => (
-                    <NavigationMenuItem key={menu.label}>
-                      <NavigationMenuTrigger>
-                        {menu.label}
-                      </NavigationMenuTrigger>
-                      <NavigationMenuContent className="p-0">
-                        <div className="flex">
-                          <div className="p-4">
-                            {menu.sections
-                              .filter((s) => hasDescription(s.items))
-                              .map((section, i) => (
-                                <div key={section.label}>
-                                  {i > 0 && <Separator className="my-3" />}
-                                  <p className="mb-3 text-[10px] text-muted-foreground uppercase">
-                                    {section.label}
-                                  </p>
+              <NavigationMenuList>
+                {menus.map((menu) => (
+                  <NavigationMenuItem key={menu.label}>
+                    <NavigationMenuTrigger>
+                      {menu.label}
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent className="p-0 border border-border rounded-lg bg-popover shadow-lg">
+                      <div className={cn("flex", menu.sections.length > 2 ? "w-full lg:w-[800px]" : "w-full lg:w-[400px]")}>
+                        <div className={cn("p-6 grid w-full gap-x-12 gap-y-8", menu.sections.length > 2 ? "grid-cols-1 md:grid-cols-2" : "grid-cols-1")}>
+                          {menu.sections
+                            .filter((s) => hasDescription(s.items))
+                            .map((section, i) => (
+                              <div key={section.label} className="flex flex-col gap-3">
+                                <p className="text-[10px] font-bold text-primary/80 uppercase tracking-widest">
+                                  {section.label}
+                                </p>
+                                <div className="flex flex-col gap-4">
                                   {section.items.map((item) => (
                                     <NavigationMenuLink
                                       key={item.title}
@@ -262,18 +317,18 @@ const Navbar14 = ({
                                     >
                                       <a
                                         href={item.href}
-                                        className="group flex cursor-pointer flex-row gap-3"
+                                        className="group flex cursor-pointer flex-row gap-3 transition-colors hover:text-primary"
                                       >
-                                        <span className="flex size-10 shrink-0 items-center justify-center rounded-md border border-border bg-background">
-                                          <item.icon className="size-5!" />
+                                        <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-muted/50 transition-colors group-hover:bg-primary/10">
+                                          <item.icon className="size-5 text-primary" />
                                         </span>
-                                        <div className="flex flex-col">
-                                          <span className="flex items-center gap-0.5 text-sm font-medium whitespace-nowrap">
+                                        <div className="flex flex-col min-w-0">
+                                          <span className="flex items-center gap-0.5 text-sm font-medium whitespace-nowrap overflow-hidden text-ellipsis">
                                             {item.title}
-                                            <ChevronRight className="size-4 text-primary! opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:opacity-100" />
+                                            <ChevronRight className="size-4 text-primary opacity-0 transition-all duration-200 -translate-x-1 group-hover:translate-x-0.5 group-hover:opacity-100" />
                                           </span>
                                           {item.description && (
-                                            <p className="text-xs whitespace-nowrap text-muted-foreground">
+                                            <p className="text-xs text-muted-foreground line-clamp-1 break-words">
                                               {item.description}
                                             </p>
                                           )}
@@ -282,111 +337,78 @@ const Navbar14 = ({
                                     </NavigationMenuLink>
                                   ))}
                                 </div>
-                              ))}
-                          </div>
-                          <Separator
-                            orientation="vertical"
-                            className="data-[orientation=vertical]:h-auto"
-                          />
-                          <div
-                            className={cn(
-                              "p-4",
-                              menu.featured && "w-64 shrink-0",
-                            )}
-                          >
-                            {menu.sections
-                              .filter((s) => !hasDescription(s.items))
-                              .map((section, i) => (
-                                <div key={section.label}>
-                                  {i > 0 && (
-                                    <p className="mt-5 mb-3 text-[10px] text-muted-foreground uppercase">
-                                      {section.label}
-                                    </p>
-                                  )}
-                                  {i === 0 && (
-                                    <p className="mb-3 text-[10px] text-muted-foreground uppercase">
-                                      {section.label}
-                                    </p>
-                                  )}
-                                  <div>
-                                    {section.items.map((item) => (
-                                      <NavigationMenuLink
-                                        key={item.title}
-                                        asChild
-                                      >
-                                        <a
-                                          href={item.href}
-                                          className="flex flex-row items-center gap-3"
-                                        >
-                                          <item.icon className="size-4!" />
-                                          <span className="text-sm font-medium whitespace-nowrap">
-                                            {item.title}
-                                          </span>
-                                        </a>
-                                      </NavigationMenuLink>
-                                    ))}
-                                  </div>
-                                </div>
-                              ))}
-                            {menu.featured && (
-                              <>
-                                <p className="mt-5 mb-3 text-[10px] text-muted-foreground uppercase">
-                                  Latest Updates
-                                </p>
-                                <NavigationMenuLink asChild>
-                                  <a href={menu.featured.href}>
-                                    <div className="rounded-lg bg-primary p-3">
-                                      <img
-                                        src={menu.featured.image.src}
-                                        alt={menu.featured.image.alt}
-                                        className="aspect-video w-full rounded-md object-cover"
-                                      />
-                                    </div>
-                                  </a>
-                                </NavigationMenuLink>
-                                <div className="mt-2 flex flex-col gap-1 px-1">
-                                  <p className="text-xs font-medium">
-                                    {menu.featured.title}
-                                  </p>
-                                  <p className="text-xs text-muted-foreground leading-snug">
-                                    {menu.featured.description}
-                                  </p>
-                                </div>
-                              </>
-                            )}
-                          </div>
+                              </div>
+                            ))}
                         </div>
-                      </NavigationMenuContent>
-                    </NavigationMenuItem>
-                  ))}
-                  {links.map((link) => (
-                    <NavigationMenuItem key={link.label}>
-                      <NavigationMenuLink
-                        asChild
-                        className={navigationMenuTriggerStyle()}
-                      >
-                        <a href={link.href}>{link.label}</a>
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                  ))}
-                </NavigationMenuList>
-              </NavigationMenu>
+                        {menu.sections.some((s) => !hasDescription(s.items)) && (
+                          <>
+                            <Separator
+                              orientation="vertical"
+                              className="data-[orientation=vertical]:h-auto"
+                            />
+                            <div className="p-4">
+                              {menu.sections
+                                .filter((s) => !hasDescription(s.items))
+                                .map((section, i) => (
+                                  <div key={section.label}>
+                                    <p className={cn("mb-3 text-[10px] text-muted-foreground uppercase", i > 0 && "mt-5")}>
+                                      {section.label}
+                                    </p>
+                                    <div>
+                                      {section.items.map((item) => (
+                                        <NavigationMenuLink
+                                          key={item.title}
+                                          asChild
+                                        >
+                                          <a
+                                            href={item.href}
+                                            className="flex flex-row items-center gap-3"
+                                          >
+                                            <item.icon className="size-4!" />
+                                            <span className="text-sm font-medium whitespace-nowrap">
+                                              {item.title}
+                                            </span>
+                                          </a>
+                                        </NavigationMenuLink>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ))}
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                ))}
+                {links.map((link) => (
+                  <NavigationMenuItem key={link.label}>
+                    <NavigationMenuLink
+                      asChild
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      <a href={link.href}>{link.label}</a>
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
 
           <div className="flex flex-1 items-center justify-end gap-2">
             <div className="hidden items-center gap-2 lg:flex">
-             {auth.login.label && (
-              <Button variant="outline" asChild>
-                <a href={auth.login.href}>{auth.login.label}</a>
+              {auth.login.label && (
+                <Button variant="outline" asChild>
+                  <a href={auth.login.href}>{auth.login.label}</a>
+                </Button>
+              )}
+              <Button className="group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight" asChild>
+                <a href={auth.signup.href}>
+                  <span>Contact Us</span>
+                  <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
+                </a>
               </Button>
-            )}
-            <Button className="group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight" asChild>
-              <a href={auth.signup.href}>
-                <span>Send Message</span>
-                <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
-              </a>
-            </Button>
-          </div>
+            </div>
 
             <button
               className="flex size-10 items-center justify-center rounded-md border lg:hidden"
@@ -522,7 +544,7 @@ const Navbar14 = ({
             </a>
           ))}
 
-           <div className="container mx-auto mt-auto flex flex-col gap-2 py-8">
+          <div className="container mx-auto mt-auto flex flex-col gap-2 py-8">
             {auth.login.label && (
               <Button variant="outline" className="w-full" asChild>
                 <a href={auth.login.href}>{auth.login.label}</a>

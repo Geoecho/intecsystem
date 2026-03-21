@@ -10,8 +10,8 @@ export function BackToTop() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      // Show button when page is scrolled down 300px
-      if (window.scrollY > 300) {
+      const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollPos > 300) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -26,9 +26,19 @@ export function BackToTop() {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
+    const targets = [window, document.documentElement, document.body];
+    targets.forEach(target => {
+      try {
+        target.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      } catch (e) {
+        // Fallback for older browsers
+        if ('scrollTop' in target) {
+          (target as any).scrollTop = 0;
+        }
+      }
     });
   };
 

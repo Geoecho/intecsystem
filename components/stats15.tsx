@@ -1,9 +1,9 @@
 "use client";
 
 import NumberFlow from "@number-flow/react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -13,9 +13,26 @@ interface Stats15Props {
 }
 
 const Stats15 = ({ className }: Stats15Props) => {
-  const ref = useRef(null);
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1, margin: "0px 0px -100px 0px" });
   const IllustrationRef = useRef(null);
   const [selectedYear, setSelectedYear] = useState(2021);
+  const [displayValue, setDisplayValue] = useState({
+    YearsInBusiness: 0,
+    Professionals: 0,
+    Projects: 0,
+    SupportAvailability: 0,
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      // 200ms delay ensures the component is fully painted before the number transition starts
+      const timeout = setTimeout(() => {
+        setDisplayValue(Stats[selectedYear as keyof typeof Stats]);
+      }, 200);
+      return () => clearTimeout(timeout);
+    }
+  }, [isInView, selectedYear]);
 
   const Stats = {
     2021: {
@@ -51,29 +68,19 @@ const Stats15 = ({ className }: Stats15Props) => {
   const years = Object.keys(Stats).map(Number);
 
   return (
-    <section className={cn("py-20 md:py-32", className)}>
-      <div className="mx-auto max-w-[1100px] px-6 flex flex-col items-center gap-8 lg:gap-16">
+    <section ref={sectionRef} className={cn("py-20 md:py-32", className)}>
+      <div className="mx-auto max-w-7xl px-6 flex flex-col items-center gap-8 lg:gap-16">
         <div className="z-10 flex flex-col items-center text-center">
-          <h2 className="max-w-xl text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
+          <h2 className="max-w-xl text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Numbers that speak for themselves">
             Numbers that speak for themselves
           </h2>
           <p className="mt-4 max-w-xl text-muted-foreground/80">
             Over two decades of delivering reliable digital infrastructure and security solutions across Africa and beyond.
           </p>
-          <div className="my-10 flex flex-wrap gap-4 justify-center">
-            <Button
-              variant="outline"
-              className="text-md group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight"
-              asChild
-            >
-              <a href="/about">
-                <span>Our Story</span>
-                <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
-              </a>
-            </Button>
+          <div className="my-10 flex w-full max-w-sm flex-col items-center justify-center gap-4 mx-auto">
             <Button
               variant="default"
-              className="text-md group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight"
+              className="text-md group flex h-12 w-full items-center justify-center gap-2 rounded-md px-8 text-base tracking-tight"
               asChild
             >
               <a href="/contact">
@@ -83,14 +90,13 @@ const Stats15 = ({ className }: Stats15Props) => {
             </Button>
           </div>
           <div
-            ref={ref}
-            className="mt-12 flex w-full max-w-3xl flex-col items-center bg-background md:mt-16 xl:bg-transparent"
+            className="mt-12 flex w-full max-w-full flex-col items-center justify-between md:mt-16 xl:bg-transparent"
           >
             <div className="mt-auto mb-10 grid w-full grid-cols-2 gap-8 md:grid-cols-4 md:gap-4">
               <div className="w-full text-center">
                 <h3 className="text-4xl font-medium lg:text-5xl">
                   <NumberFlow
-                    value={Stats[selectedYear as keyof typeof Stats].YearsInBusiness}
+                    value={displayValue.YearsInBusiness}
                     suffix="+"
                   />
                 </h3>
@@ -101,7 +107,7 @@ const Stats15 = ({ className }: Stats15Props) => {
               <div className="w-full text-center">
                 <h3 className="text-4xl font-medium lg:text-5xl">
                   <NumberFlow
-                    value={Stats[selectedYear as keyof typeof Stats].Professionals}
+                    value={displayValue.Professionals}
                     suffix="+"
                   />
                 </h3>
@@ -112,7 +118,7 @@ const Stats15 = ({ className }: Stats15Props) => {
               <div className="w-full text-center">
                 <h3 className="text-4xl font-medium lg:text-5xl">
                   <NumberFlow
-                    value={Stats[selectedYear as keyof typeof Stats].Projects}
+                    value={displayValue.Projects}
                     suffix="+"
                   />
                 </h3>
@@ -123,7 +129,7 @@ const Stats15 = ({ className }: Stats15Props) => {
               <div ref={IllustrationRef} className="w-full text-center">
                 <h3 className="text-4xl font-medium lg:text-5xl">
                   <NumberFlow
-                    value={Stats[selectedYear as keyof typeof Stats].SupportAvailability}
+                    value={displayValue.SupportAvailability}
                     suffix="/7"
                   />
                 </h3>
@@ -135,15 +141,15 @@ const Stats15 = ({ className }: Stats15Props) => {
           </div>
         </div>
 
-        <div className="relative flex w-full justify-center flex-row flex-wrap gap-2 md:w-fit md:flex-row">
+        <div className="relative grid w-full max-w-7xl grid-cols-2 md:grid-cols-4 gap-3 mx-auto mt-8 px-4 md:px-0">
           {years.map((year) => (
             <div key={year} className="group">
               <button
                 onClick={() => setSelectedYear(year)}
-                className={`relative rounded-md px-4 py-1 text-sm transition-all ease-out ${
+                className={`relative w-full rounded-md px-4 py-3 text-sm font-medium transition-all ease-out ${
                   selectedYear === year
-                    ? "bg-primary text-primary-foreground md:-translate-y-1"
-                    : "bg-muted/70 hover:-translate-y-1 hover:bg-muted"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "bg-muted/70 hover:bg-muted"
                 }`}
               >
                 {year} - {year + 1}

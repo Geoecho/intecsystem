@@ -20,7 +20,7 @@ const Feature250 = ({ className }: Feature250Props) => {
         <p className="mx-auto mb-4 max-w-sm text-center text-muted-foreground md:text-xl">
           Industrial Technology & Systems
         </p>
-        <h1 className="mx-auto -mb-12 max-w-3xl text-center text-4xl font-medium tracking-tighter md:text-6xl lg:mb-5 lg:text-7xl">
+        <h1 className="mx-auto -mb-12 max-w-3xl text-center text-4xl font-medium tracking-tighter md:text-6xl lg:mb-5 lg:text-7xl" aria-label="Building the Future Together">
           Building the Future Together
         </h1>
         <AnimatedBeamIllustration />

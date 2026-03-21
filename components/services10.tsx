@@ -56,18 +56,21 @@ const Services10 = ({ className }: Services10Props) => {
     {
       icon: <ShieldCheck className="h-6 w-6" />,
       title: "SecurePlus Fraud Shield",
+      slug: "secureplus",
       description:
         "Your strongest defense against modern financial fraud.",
     },
     {
       icon: <Lock className="h-6 w-6" />,
       title: "Cyber Security Solutions",
+      slug: "cyber-security",
       description:
         "Establishing secure frameworks for increased network sensitivity and visibility.",
     },
     {
       icon: <Server className="h-6 w-6" />,
       title: "Hyper-Converged Infrastructure Solutions",
+      slug: "hci",
       description:
         "Software-centric architecture that integrates compute, storage, networking and virtualization of resources",
     },
@@ -78,7 +81,7 @@ const Services10 = ({ className }: Services10Props) => {
       <div className="relative z-20 mx-auto max-w-[1100px] px-6">
         <div className="relative space-y-16">
           <div className="relative space-y-4 text-left">
-            <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
+            <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Our Services">
               Our Services
             </h2>
             <p className="max-w-2xl text-lg tracking-tight text-muted-foreground md:text-xl">
@@ -109,7 +112,7 @@ const Services10 = ({ className }: Services10Props) => {
                     className="group mt-2 flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight"
                     asChild
                   >
-                    <a href="/contact">
+                    <a href={`/solutions/${service.slug}`}>
                       <span>Read more</span>
                       <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
                     </a>

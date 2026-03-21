@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeReset } from "@/components/theme-reset";
+import { ScrollToTop } from "@/components/scroll-to-top";
+import { ScrollProgress } from "@/components/scroll-progress";
 import { Banner5 } from "@/components/banner5";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
@@ -35,11 +37,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <ThemeReset />
+        <ScrollToTop />
         <main className="flex-1">
           {children}
         </main>
         <Footer18 />
         <Banner5 />
+        <ScrollProgress />
       </body>
     </html>
   );

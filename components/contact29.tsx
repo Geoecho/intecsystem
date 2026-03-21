@@ -1,8 +1,10 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ArrowLeft,
+  ArrowRight,
   Building2,
   Check,
   HelpCircle,
@@ -112,6 +114,13 @@ interface Contact29Props {
   onSubmit?: (data: ContactFormData) => Promise<void>;
 }
 
+const animationProps = {
+  initial: { opacity: 0, y: 10 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.05 },
+  transition: { duration: 0.5, ease: "easeOut" }
+} as const;
+
 const Contact29 = ({
   title = "Let's Work Together",
   subtitle = "Select the service that best fits your needs and we'll get back to you within one business day.",
@@ -142,6 +151,7 @@ const Contact29 = ({
   const handleContinue = () => {
     if (selectedService) {
       setStep("form");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -169,8 +179,8 @@ const Contact29 = ({
 
   if (step === "success") {
     return (
-      <section className={cn("relative", className)}>
-        <div className="container flex flex-col justify-center">
+      <section className={cn("relative py-20 md:py-32", className)}>
+        <motion.div {...animationProps} className="container flex flex-col justify-center">
           <div className="mx-auto max-w-xl text-center">
             <div className="mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-green-500/10">
               <Check className="size-10 text-green-600" />
@@ -181,26 +191,26 @@ const Contact29 = ({
               you within one business day.
             </p>
             <Button
-              className="mt-10 rounded-full px-8"
-              size="lg"
+              className="group mt-10 flex h-12 items-center justify-center gap-2 rounded-md px-8 text-base tracking-tight"
               variant="outline"
               onClick={resetForm}
             >
-              Send Another Message
+              <span>Send Another Message</span>
+              <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
             </Button>
           </div>
-        </div>
+        </motion.div>
       </section>
     );
   }
 
   return (
-    <section className={cn("relative", className)}>
-      <div className="container flex flex-col justify-center">
+    <section className={cn("relative py-20 md:py-32", className)}>
+      <motion.div {...animationProps} className="container flex flex-col justify-center">
         {step === "select" && (
           <div className="mx-auto w-full max-w-[1100px]">
             <div className="mb-12 text-center">
-              <h1 className="mb-6 text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
+              <h1 className="mb-6 text-3xl font-semibold tracking-tighter md:text-4xl lg:text-5xl">
                 {title}
               </h1>
               <p className="text-lg text-muted-foreground">
@@ -218,7 +228,7 @@ const Contact29 = ({
                       type="button"
                       onClick={() => handleServiceSelect(service.id)}
                       className={cn(
-                        "relative flex h-full w-full flex-col items-center rounded-3xl p-8 text-center transition-all backdrop-blur-sm",
+                        "relative flex h-full w-full flex-col items-center rounded-md p-8 text-center transition-all backdrop-blur-sm",
                         isSelected
                           ? "bg-background ring-2 ring-primary"
                           : "bg-background/80 border border-border hover:bg-background",
@@ -231,7 +241,7 @@ const Contact29 = ({
                       )}
                       <div
                         className={cn(
-                          "mb-4 flex size-14 items-center justify-center rounded-xl",
+                          "mb-4 flex size-14 items-center justify-center rounded-lg",
                           isSelected ? "bg-primary/10" : "bg-muted",
                         )}
                       >
@@ -257,19 +267,20 @@ const Contact29 = ({
             <div className="mt-12 flex justify-center">
               <Button
                 size="lg"
-                className="rounded-full px-10"
+                className="group flex h-12 w-full max-w-sm items-center justify-center gap-2 rounded-md px-10 text-base tracking-tight"
                 onClick={handleContinue}
                 disabled={!selectedService}
               >
-                Continue
+                <span>Continue</span>
+                <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
               </Button>
             </div>
           </div>
         )}
 
         {step === "form" && (
-          <div className="mx-auto w-full max-w-[1100px] grid gap-16 lg:grid-cols-2 lg:gap-24">
-            <div className="flex flex-col justify-center">
+          <div className="mx-auto w-full max-w-[1100px] grid gap-16 lg:grid-cols-2 lg:gap-24 lg:items-start">
+            <div className="flex flex-col justify-start">
               <button
                 type="button"
                 onClick={() => setStep("select")}
@@ -279,7 +290,7 @@ const Contact29 = ({
                 Change selection
               </button>
 
-              <h1 className="mb-6 text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
+              <h1 className="mb-6 text-3xl font-semibold tracking-tighter md:text-4xl lg:text-5xl">
                 Tell Us More
               </h1>
               <p className="mb-12 text-lg text-muted-foreground">
@@ -287,7 +298,7 @@ const Contact29 = ({
                 within 24 hours.
               </p>
 
-              <div className="flex items-center gap-4 rounded-3xl border border-border bg-background/80 p-6 backdrop-blur-sm">
+              <div className="flex items-center gap-4 rounded-md border border-border bg-background/80 p-6 backdrop-blur-sm">
                 {(() => {
                   const service = services.find(
                     (s) => s.id === selectedService,
@@ -296,7 +307,7 @@ const Contact29 = ({
                   const Icon = service.icon;
                   return (
                     <>
-                      <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10">
+                      <div className="flex size-12 items-center justify-center rounded-lg bg-primary/10">
                         <Icon className="size-6 text-primary" />
                       </div>
                       <div>
@@ -314,7 +325,7 @@ const Contact29 = ({
             <div className="flex items-center">
               <form
                 onSubmit={form.handleSubmit(handleFormSubmit)}
-                className="w-full rounded-3xl border border-border bg-background/80 p-8 backdrop-blur-sm md:p-10"
+                className="w-full rounded-md border border-border bg-background/80 p-8 backdrop-blur-sm md:p-10"
               >
                 <h2 className="mb-8 text-2xl font-semibold">Your Details</h2>
 
@@ -333,7 +344,7 @@ const Contact29 = ({
                             id={field.name}
                             aria-invalid={fieldState.invalid}
                             placeholder="Your name"
-                            className="rounded-full px-6"
+                            className="rounded-md px-4 h-12"
                           />
                           {fieldState.invalid && (
                             <FieldError errors={[fieldState.error]} />
@@ -356,7 +367,7 @@ const Contact29 = ({
                             type="email"
                             aria-invalid={fieldState.invalid}
                             placeholder="you@example.com"
-                            className="rounded-full px-6"
+                            className="rounded-md px-4 h-12"
                           />
                           {fieldState.invalid && (
                             <FieldError errors={[fieldState.error]} />
@@ -376,7 +387,7 @@ const Contact29 = ({
                           {...field}
                           id={field.name}
                           placeholder="Your company"
-                          className="rounded-full px-6"
+                          className="rounded-md px-4 h-12"
                         />
                       </Field>
                     )}
@@ -396,7 +407,7 @@ const Contact29 = ({
                           aria-invalid={fieldState.invalid}
                           placeholder="Tell us about your project..."
                           rows={5}
-                          className="rounded-[2rem] px-6 py-4"
+                          className="rounded-md px-4 py-4"
                         />
                         {fieldState.invalid && (
                           <FieldError errors={[fieldState.error]} />
@@ -413,16 +424,19 @@ const Contact29 = ({
 
                   <Button
                     size="lg"
-                    className="w-full rounded-full"
+                    className="group flex h-12 w-full items-center justify-center gap-2 rounded-md px-10 text-base tracking-tight"
                     disabled={form.formState.isSubmitting}
                   >
                     {form.formState.isSubmitting ? (
                       <>
                         <LoaderIcon className="mr-2 size-4 animate-spin" />
-                        Sending...
+                        <span>Sending...</span>
                       </>
                     ) : (
-                      "Send Message"
+                      <>
+                        <span>Send Message</span>
+                        <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
+                      </>
                     )}
                   </Button>
                 </FieldGroup>
@@ -430,7 +444,7 @@ const Contact29 = ({
             </div>
           </div>
         )}
-      </div>
+      </motion.div>
     </section>
   );
 };

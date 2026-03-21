@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import React from "react";
 
-import { PointerHighlight } from "@/components/ui/pointer-highlight";
 import { Button } from "@/components/ui/button";
+import { PointerHighlight } from "@/components/ui/pointer-highlight";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 
@@ -35,24 +35,24 @@ const DATA: DataItem[] = [
 const Hero245 = ({ className }: Hero245Props) => {
   return (
     <section
-      className={cn("relative grid w-full overflow-hidden py-20 md:py-32", className)}
+      className={cn("relative grid w-full overflow-hidden pt-40 pb-20 md:pt-48 md:pb-32", className)}
     >
       <div className="relative z-10 container h-full grid-cols-1 items-start md:items-center justify-start md:justify-center gap-6 pt-0 md:pt-0">
         <div className="flex flex-col items-start md:items-center justify-start md:justify-center text-left md:text-center">
           <h1 className="max-w-4xl text-left md:text-center text-4xl font-semibold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-            Empowering Industrial Excellence through
-            <PointerHighlight containerClassName="inline-block ml-2">
-              <span className="text-primary">Systems.</span>
+            Where creativity & technology
+            <PointerHighlight containerClassName="inline-block ml-2 md:ml-3">
+              <span className="text-primary">intersect.</span>
             </PointerHighlight>
           </h1>
           <p className="mt-6 md:mt-10 max-w-lg text-left md:text-center text-muted-foreground">
-            Over two decades of delivering reliable digital infrastructure, 
+            Over two decades of delivering reliable digital infrastructure,
             cutting-edge security, and seamless system integration solutions worldwide.
           </p>
 
-          <div className="mt-8 md:mt-10 flex w-full flex-wrap items-start md:items-center justify-start md:justify-center gap-4">
-            <Button 
-              className="group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight"
+          <div className="mt-8 md:mt-10 flex w-full max-w-md flex-col sm:flex-row items-center justify-start md:justify-center gap-4">
+            <Button
+              className="group flex h-12 w-full sm:flex-1 items-center justify-center gap-2 rounded-md px-8 text-base tracking-tight"
               asChild
             >
               <a href="/solutions">
@@ -60,9 +60,9 @@ const Hero245 = ({ className }: Hero245Props) => {
                 <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
               </a>
             </Button>
-            <Button 
+            <Button
               variant="outline"
-              className="h-10 rounded-md px-6 text-sm"
+              className="h-12 w-full sm:flex-1 rounded-md px-8 flex items-center justify-center text-base tracking-tight"
               asChild
             >
               <a href="/about">
