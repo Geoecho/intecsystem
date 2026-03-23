@@ -78,7 +78,7 @@ const Services10 = ({ className }: Services10Props) => {
 
   return (
     <section className={cn("relative overflow-hidden py-20 md:py-32", className)}>
-      <div className="relative z-20 mx-auto max-w-[1100px] px-6">
+      <div className="relative z-20 container mx-auto max-w-6xl px-6">
         <div className="relative space-y-16">
           <div className="relative space-y-4 text-left">
             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Our Services">

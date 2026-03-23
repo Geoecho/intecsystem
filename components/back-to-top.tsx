@@ -48,7 +48,7 @@ export function BackToTop() {
       size="icon"
       className={cn(
         "fixed bottom-8 right-8 z-50 rounded-md bg-background shadow-lg transition-all duration-300 hover:bg-accent",
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
+        isVisible ? "translate-y-0 opacity-100 pointer-events-auto" : "translate-y-16 opacity-0 pointer-events-none"
       )}
       onClick={scrollToTop}
       aria-label="Back to top"

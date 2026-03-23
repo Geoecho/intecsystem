@@ -35,9 +35,9 @@ const DATA: DataItem[] = [
 const Hero245 = ({ className }: Hero245Props) => {
   return (
     <section
-      className={cn("relative grid w-full overflow-hidden pt-40 pb-20 md:pt-48 md:pb-32", className)}
+      className={cn("relative grid w-full overflow-hidden pt-25 pb-20 md:pt-48 md:pb-32", className)}
     >
-      <div className="relative z-10 container h-full grid-cols-1 items-start md:items-center justify-start md:justify-center gap-6 pt-0 md:pt-0">
+      <div className="relative z-10 container mx-auto max-w-6xl px-6 h-full grid-cols-1 items-start md:items-center justify-start md:justify-center gap-6 pt-0 md:pt-0">
         <div className="flex flex-col items-start md:items-center justify-start md:justify-center text-left md:text-center">
           <h1 className="max-w-4xl text-left md:text-center text-4xl font-semibold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
             Where creativity & technology

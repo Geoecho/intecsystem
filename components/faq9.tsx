@@ -41,7 +41,7 @@ interface Faq9Props {
 const Faq9 = ({ className }: Faq9Props) => {
   return (
     <section className={cn("py-20 md:py-32", className)}>
-      <div className="mx-auto max-w-[1100px] px-6">
+      <div className="container mx-auto max-w-6xl px-6">
         <div className="mb-12 flex flex-col items-start text-left gap-4">
           <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Questions?">
             Questions?

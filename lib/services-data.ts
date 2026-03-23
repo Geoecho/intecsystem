@@ -15,7 +15,12 @@ import {
   Search,
   HardDrive,
   FileSearch,
-  BookOpen
+  BookOpen,
+  CheckCircle2,
+  Leaf,
+  Lock,
+  FolderArchive,
+  HardHat
 } from "lucide-react";
 
 export const SERVICES_DATA = [
@@ -346,3 +351,127 @@ export const SOLUTIONS_DATA = [
     detailedContent: "<p>Hyper-Converged Infrastructure from InTec System collapses your entire data center stack into a single, software-defined platform. By integrating compute, storage, and networking into unified appliances, we dramatically simplify operations, reduce hardware footprint, and cut costs.</p><p>Our HCI solutions provide enterprise-grade performance with the simplicity of cloud, allowing you to scale by simply adding nodes and manage everything through a single pane of glass.</p>"
   }
 ];
+
+export const CERTIFICATIONS_DATA = [
+  {
+    slug: "iso-9001",
+    standard: "ISO 9001:2015",
+    title: "Quality Management System",
+    shortDescription: "Ensuring consistent product and service quality through systematic process management.",
+    description: "ISO 9001:2015 is the international standard for a quality management system. It provides a framework for organizations to ensure they meet the needs of customers and other stakeholders while meeting statutory and regulatory requirements.",
+    icon: CheckCircle2,
+    items: [
+      "Enhanced customer satisfaction through consistent service",
+      "Process optimization and operational efficiency",
+      "Improved risk management and business resilience",
+      "International recognition as a quality-focused partner",
+      "Continuous improvement culture within the organization"
+    ],
+    expertise: [
+      { id: 1, title: "TÜV NORD Certified", description: "Rigorous external audits by global leaders" },
+      { id: 2, title: "Process Excellence", description: "Systematic mapping of all business workflows" }
+    ],
+    detailedContent: "<p>ISO 9001:2015 is based on the quality management principles including a strong customer focus, the motivation and implication of top management, the process approach and continual improvement. These principles are explained in more detail in ISO's quality management principles.</p><p>Using ISO 9001:2015 helps ensure that customers get consistent, good-quality products and services, which in turn brings many business benefits.</p>"
+  },
+  {
+    slug: "iso-14001",
+    standard: "ISO 14001:2015",
+    title: "Environmental Management",
+    shortDescription: "Minimizing environmental impact through measurable sustainable business practices.",
+    description: "ISO 14001:2015 sets out the criteria for an environmental management system. It maps out a framework that a company or organization can follow to set up an effective environmental management system.",
+    icon: Leaf,
+    items: [
+      "Reduced environmental footprint and waste production",
+      "Compliance with current and future environmental legislation",
+      "Improved corporate image and sustainability reputation",
+      "Lower operational costs through resource efficiency",
+      "Greater employee engagement in environmental initiatives"
+    ],
+    expertise: [
+      { id: 1, title: "Eco-Efficiency", description: "Resource optimization strategies" },
+      { id: 2, title: "Sustainable IT", description: "Green technology implementation" }
+    ],
+    detailedContent: "<p>ISO 14001:2015 helps an organization achieve the intended outcomes of its environmental management system, which provide value for the environment, the organization itself and interested parties. Consistent with the organization's environmental policy, the intended outcomes of an environmental management system include enhancement of environmental performance, fulfilment of compliance obligations and achievement of environmental objectives.</p>"
+  },
+  {
+    slug: "iso-20000",
+    standard: "ISO 20000:2011",
+    title: "IT Service Management",
+    shortDescription: "Delivering managed IT services that meet rigorous international industry standards.",
+    description: "ISO/IEC 20000-1:2011 is a service management system (SMS) standard. It specifies requirements for the service provider to plan, establish, implement, operate, monitor, review, maintain and improve an SMS.",
+    icon: Headset,
+    items: [
+      "Alignment of IT services with business priorities",
+      "Improved reliability and availability of IT systems",
+      "Efficient incident response and problem management",
+      "Transparent service level management (SLMs)",
+      "Culture of service excellence and continuous feedback"
+    ],
+    expertise: [
+      { id: 1, title: "ITIL Alignment", description: "Best practices in IT service delivery" },
+      { id: 2, title: "SLA Management", description: "Guaranteed uptime and responsiveness" }
+    ],
+    detailedContent: "<p>The standard ensures that our IT service management processes are aligned both with the needs of the business and with international best practices. It covers service delivery and relationship processes, as well as resolution, control, and release processes.</p>"
+  },
+  {
+    slug: "iso-27001",
+    standard: "ISO 27001:2013",
+    title: "Information Security Management",
+    shortDescription: "Protecting client data and organizational assets through robust security controls.",
+    description: "ISO/IEC 27001:2013 specifies the requirements for establishing, implementing, maintaining and continually improving an information security management system.",
+    icon: Lock,
+    items: [
+      "Robust protection against unauthorized data access",
+      "Comprehensive risk assessment and threat monitoring",
+      "Business continuity in the face of security incidents",
+      "Compliance with data privacy regulations (GDPR, etc.)",
+      "Verified security posture for partners and clients"
+    ],
+    expertise: [
+      { id: 1, title: "Data Integrity", description: "Prevention of unauthorized modifications" },
+      { id: 2, title: "Security Culture", description: "Employee awareness and rigorous protocols" }
+    ],
+    detailedContent: "<p>Information is a vital asset for any organization. ISO 27001:2013 helps us manage the security of assets such as financial information, intellectual property, employee details or information entrusted to us by third parties.</p>"
+  },
+  {
+    slug: "iso-30301",
+    standard: "ISO 30301:2019",
+    title: "Records Management System",
+    shortDescription: "Managing organizational records with precision, integrity, and full traceability.",
+    description: "ISO 30301:2019 specifies the requirements for a Management System for Records (MSR). It provides a framework for creating and managing authentic, reliable and useable records.",
+    icon: FolderArchive,
+    items: [
+      "Systematic control of organizational information",
+      "Full traceability and auditability of records",
+      "Efficient retrieval and disposition of data",
+      "Compliance with legal and regulatory record-keeping",
+      "Long-term preservation of institutional knowledge"
+    ],
+    expertise: [
+      { id: 1, title: "Traceability", description: "Complete audit trails for all critical documents" },
+      { id: 2, title: "Digital Archiving", description: "Modern, secure electronic records management" }
+    ],
+    detailedContent: "<p>A Management System for Records (MSR) enables an organization to conduct its business in an orderly and efficient manner, and to document its activities in an authentic, reliable and useable way. Records management is a critical pillar of corporate governance.</p>"
+  },
+  {
+    slug: "iso-45001",
+    standard: "ISO 45001:2018",
+    title: "Occupational Health & Safety",
+    shortDescription: "Safeguarding the well-being of our people with industry-leading safety standards.",
+    description: "ISO 45001:2018 specifies requirements for an occupational health and safety (OH&S) management system, to enable an organization to provide safe and healthy workplaces.",
+    icon: HardHat,
+    items: [
+      "Prevention of work-related injury and ill health",
+      "Proactive identification and control of OH&S risks",
+      "Promotion of a safe and healthy working environment",
+      "Compliance with legal health and safety requirements",
+      "Continuous improvement of safety performance"
+    ],
+    expertise: [
+      { id: 1, title: "Workplace Safety", description: "Comprehensive hazard management" },
+      { id: 2, title: "Well-being First", description: "Prioritizing the health of our employees" }
+    ],
+    detailedContent: "<p>The goal of ISO 45001:2018 is to reduce occupational injuries and diseases. It helps organizations to provide safe and healthy workplaces, prevent work-related injury and ill health, and continually improve their OH&S performance.</p>"
+  }
+];
+
