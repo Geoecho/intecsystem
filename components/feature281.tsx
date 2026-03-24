@@ -2,13 +2,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import {
-  FaApple,
-  FaGoogle,
-  FaLinkedin,
-  FaMicrosoft,
-  FaTwitter,
-} from "react-icons/fa";
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -24,7 +17,7 @@ const Feature281 = ({ className }: Feature281Props) => {
 
   return (
     <section className={cn("relative h-full w-full overflow-hidden py-20 md:py-32", className)}>
-      <div className="relative z-20 mx-auto max-w-[1100px] px-6 flex w-full flex-col">
+      <div className="relative z-20 container mx-auto max-w-6xl px-6 flex w-full flex-col">
         <div className="relative flex flex-col gap-4 text-center items-center">
           <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Client Testimonials">
             Client Testimonials
@@ -67,8 +60,8 @@ const CARDS = [
     id: 0,
     name: "Dejan Jovanovski",
     designation: "CTO, Financial Sector",
-    userImage: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/person1.jpeg",
-    companyIcon: FaMicrosoft,
+    userImage: "/images/testimonial-dejan.png",
+    companyIcon: null,
     content: (
       <p>
         InTec System has been our preferred IT partner for years. Their{" "}
@@ -81,8 +74,8 @@ const CARDS = [
     id: 1,
     name: "Elena Petkovska",
     designation: "Project Manager",
-    userImage: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/person2.jpeg",
-    companyIcon: FaLinkedin,
+    userImage: "/images/testimonial-elena.png",
+    companyIcon: null,
     content: (
       <p>
         The software solutions provided by InTec are both{" "}
@@ -95,8 +88,8 @@ const CARDS = [
     id: 2,
     name: "Marko Velkovski",
     designation: "Operations Director",
-    userImage: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/person3.jpeg",
-    companyIcon: FaGoogle,
+    userImage: "/images/testimonial-marko.png",
+    companyIcon: null,
     content: (
       <p>
         Reliability is key in our industry. One call to InTec and a{" "}
@@ -109,8 +102,8 @@ const CARDS = [
     id: 3,
     name: "Ivana Stojkovska",
     designation: "HR & Admin Lead",
-    userImage: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/guri3/avatar3.png",
-    companyIcon: FaMicrosoft,
+    userImage: "/images/testimonial-ivana.png",
+    companyIcon: null,
     content: (
       <p>
         Their consultancy services helped us improve our strategy and{" "}
@@ -126,7 +119,7 @@ type Card = {
   name: string;
   designation: string;
   userImage: string;
-  companyIcon: React.ComponentType<{ className?: string }>;
+  companyIcon: React.ComponentType<{ className?: string }> | null;
   content: React.ReactNode;
 };
 
@@ -172,7 +165,6 @@ const CardStack = ({
   return (
     <div className="relative h-[280px] w-full md:h-64">
       {cards.map((card, index) => {
-        const CompanyIcon = card.companyIcon;
         return (
           <motion.div
             key={card.id}
@@ -194,18 +186,13 @@ const CardStack = ({
             <div className="font-normal text-neutral-700 dark:text-neutral-200">
               {card.content}
             </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Avatar key={index} className="size-12">
-                  <AvatarImage src={card.userImage} alt={card.name} />
-                </Avatar>
-                <div>
-                  <p className="font-medium">{card.name}</p>
-                  <p className="text-muted-foreground/80">{card.designation}</p>
-                </div>
-              </div>
-              <div className="flex size-10 items-center justify-center rounded-md border border-border bg-transparent">
-                <CompanyIcon className="size-5" />
+            <div className="flex items-center gap-2">
+              <Avatar key={index} className="size-12">
+                <AvatarImage src={card.userImage} alt={card.name} />
+              </Avatar>
+              <div>
+                <p className="font-medium">{card.name}</p>
+                <p className="text-muted-foreground/80">{card.designation}</p>
               </div>
             </div>
           </motion.div>

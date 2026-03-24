@@ -19,36 +19,42 @@ interface Awards4Props {
 const certifications = [
   {
     standard: "ISO 9001:2015",
+    slug: "iso-9001",
     name: "Quality Management",
     description: "Ensuring consistent product and service quality through systematic process management.",
     icon: CheckCircle2,
   },
   {
     standard: "ISO 14001:2015",
+    slug: "iso-14001",
     name: "Environmental Management",
     description: "Minimizing environmental impact through measurable sustainable business practices.",
     icon: Leaf,
   },
   {
     standard: "ISO 20000:2011",
+    slug: "iso-20000",
     name: "IT Service Management",
     description: "Delivering managed IT services that meet rigorous international industry standards.",
     icon: Headset,
   },
   {
     standard: "ISO 27001:2013",
+    slug: "iso-27001",
     name: "Information Security",
     description: "Protecting client data and organizational assets through robust security controls.",
     icon: Lock,
   },
   {
     standard: "ISO 30301:2019",
+    slug: "iso-30301",
     name: "Records Management",
     description: "Managing organizational records with precision, integrity, and full traceability.",
     icon: FolderArchive,
   },
   {
     standard: "ISO 45001:2018",
+    slug: "iso-45001",
     name: "Occupational Health & Safety",
     description: "Safeguarding the well-being of our people with industry-leading safety standards.",
     icon: HardHat,
@@ -58,7 +64,7 @@ const certifications = [
 const Awards4 = ({ className }: Awards4Props) => {
   return (
     <section className={cn("relative overflow-hidden py-20 md:py-32", className)}>
-      <div className="relative z-20 mx-auto max-w-[1100px] px-6">
+      <div className="relative z-20 container mx-auto max-w-6xl px-6">
         <div className="relative space-y-16">
         <div className="relative flex flex-col gap-4 text-right items-end">
           <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Certifications">
@@ -99,7 +105,7 @@ const Awards4 = ({ className }: Awards4Props) => {
                       className="group mt-2 flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight"
                       asChild
                     >
-                      <a href="/services">
+                      <a href={`/certifications/${cert.slug}`}>
                         <span>Read more</span>
                         <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
                       </a>

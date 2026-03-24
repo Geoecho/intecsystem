@@ -16,7 +16,7 @@ const posts = [
     author: "InTec System",
     published: "Jun 26, 2025",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
+    image: "/images/Enterprise-Data-transformation-website-banner-768x768.png",
   },
   {
     id: "post-2",
@@ -27,7 +27,7 @@ const posts = [
     author: "InTec System",
     published: "May 05, 2025",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-2.svg",
+    image: "/images/trusteer-user-group-website-event-banner-1024x576.png",
   },
   {
     id: "post-3",
@@ -38,7 +38,7 @@ const posts = [
     author: "InTec System",
     published: "May 28, 2025",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-3.svg",
+    image: "/images/future-of-finance-website-event-banner-768x432.png",
   },
   {
     id: "post-4",
@@ -49,7 +49,7 @@ const posts = [
     author: "InTec System",
     published: "Nov 20, 2024",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-4.svg",
+    image: "/images/nis2-dora-event.png",
   },
   {
     id: "post-5",
@@ -60,7 +60,7 @@ const posts = [
     author: "InTec System",
     published: "Nov 20, 2024",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-5.svg",
+    image: "/images/intec-data-ai-event.png",
   },
   {
     id: "post-6",
@@ -71,7 +71,7 @@ const posts = [
     author: "InTec System",
     published: "Dec 17, 2024",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-6.svg",
+    image: "/images/600a9977e71eaa1ac31b38c4-1024x576.jpg",
   },
   {
     id: "post-7",
@@ -82,7 +82,7 @@ const posts = [
     author: "InTec System",
     published: "Oct 22, 2024",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
+    image: "/images/fujitsu-768x293.jpg",
   },
   {
     id: "post-8",
@@ -93,7 +93,7 @@ const posts = [
     author: "InTec System",
     published: "Oct 17, 2024",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-2.svg",
+    image: "/images/5dae9d320978aec3c22b96b1-1024x389.jpeg",
   },
   {
     id: "post-9",
@@ -104,7 +104,7 @@ const posts = [
     author: "InTec System",
     published: "Apr 11, 2024",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-3.svg",
+    image: "/images/5c8f6c1f36c408558712979f-1024x487.jpg",
   },
   {
     id: "post-10",
@@ -115,7 +115,7 @@ const posts = [
     author: "InTec System",
     published: "Nov 17, 2021",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-4.svg",
+    image: "/images/Event-banner-2021-1024x400.jpg",
   },
   {
     id: "post-11",
@@ -126,7 +126,7 @@ const posts = [
     author: "InTec System",
     published: "2021",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-5.svg",
+    image: "/images/Forcepoint-DLP-Agenda-1024x575.jpg",
   },
   {
     id: "post-12",
@@ -137,7 +137,7 @@ const posts = [
     author: "InTec System",
     published: "Jan 27, 2021",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-6.svg",
+    image: "/images/Prezentacija-Fujitsu-Azure-5-1024x576.png",
   },
   {
     id: "post-13",
@@ -148,7 +148,7 @@ const posts = [
     author: "InTec System",
     published: "Dec 22, 2020",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
+    image: "/images/Premier-TE2020-01-2-1024x576.png",
   },
   {
     id: "post-14",
@@ -159,7 +159,7 @@ const posts = [
     author: "InTec System",
     published: "Jul 08, 2020",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-2.svg",
+    image: "/images/Digital-Event-Background-Zoom-01-1024x576.png",
   },
   {
     id: "post-15",
@@ -170,7 +170,7 @@ const posts = [
     author: "InTec System",
     published: "Nov 12, 2019",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-3.svg",
+    image: "/images/5d53d1115d868_1565774097.jpg",
   },
   {
     id: "post-16",
@@ -181,7 +181,7 @@ const posts = [
     author: "InTec System",
     published: "Sep 10, 2019",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-4.svg",
+    image: "/images/baner1-768x646.jpg",
   },
   {
     id: "post-17",
@@ -192,7 +192,7 @@ const posts = [
     author: "InTec System",
     published: "Oct 30, 2018",
     href: "#",
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-5.svg",
+    image: "/images/Cloud-1-1024x659.jpg",
   }
 ];
 
@@ -233,16 +233,24 @@ const Blog5 = ({ className }: Blog5Props) => {
           {visiblePosts.map((post) => (
             <a key={post.id} href={post.href} className="group flex flex-col rounded-md border bg-card text-card-foreground shadow-sm overflow-hidden hover:shadow-md transition-all">
               <div className="relative aspect-video w-full overflow-hidden bg-muted/30">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="size-12 opacity-10">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                      <circle cx="8.5" cy="8.5" r="1.5" />
-                      <polyline points="21 15 16 10 5 21" />
-                    </svg>
+                {post.image ? (
+                  <img 
+                    src={post.image} 
+                    alt={post.title} 
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="size-12 opacity-10">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <polyline points="21 15 16 10 5 21" />
+                      </svg>
+                    </div>
                   </div>
-                </div>
-                <div className="absolute top-4 left-4">
+                )}
+                <div className="absolute bottom-4 right-4">
                   <Badge variant="secondary" className="rounded-sm bg-background/80 backdrop-blur-sm text-foreground hover:bg-background/90">{post.label}</Badge>
                 </div>
               </div>

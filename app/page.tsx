@@ -32,11 +32,9 @@ export default function Home() {
         <Hero245 />
       </motion.div>
 
-      <motion.div {...animationProps}>
-        <section>
-          <Stats15 />
-        </section>
-      </motion.div>
+      <section>
+        <Stats15 />
+      </section>
 
       <motion.div {...animationProps}>
         <section>

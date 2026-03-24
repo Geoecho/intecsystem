@@ -18,10 +18,10 @@ interface About8Props {
 
 const About8 = ({ className }: About8Props) => {
   return (
-    <section className={cn("pb-32 pt-0", className)}>
+    <section className={cn("py-20 md:py-32", className)}>
       {/* About Company Hero */}
-      <section className="relative container max-w-6xl py-20 md:py-20">
-        <div className="mx-auto max-w-4xl text-center">
+      <div className="container mx-auto max-w-6xl px-6 mb-12 md:mb-16">
+        <div className="flex flex-col items-start justify-start text-left">
           <h1 className="text-3xl font-semibold tracking-tighter md:text-4xl lg:text-5xl">
             About Company
           </h1>
@@ -33,12 +33,11 @@ const About8 = ({ className }: About8Props) => {
             the relations with our customers to a level of partnership.
           </p>
         </div>
-      </section>
+      </div>
 
       {/* Why Us? Stats Section */}
-      <section className="container max-w-6xl border-y py-12">
-
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 text-center">
+      <div className="container mx-auto max-w-6xl px-6 border-y py-12">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 text-left">
           <div>
             <h3 className="text-4xl font-medium tracking-tight md:text-5xl lg:text-6xl">
               21+
@@ -64,7 +63,7 @@ const About8 = ({ className }: About8Props) => {
             <p className="mt-2 font-medium text-muted-foreground uppercase text-xs">Full customer support</p>
           </div>
         </div>
-        <div className="mt-12 mx-auto max-w-4xl space-y-6 text-center">
+        <div className="mt-12 max-w-4xl space-y-6 text-left">
           <p className="text-base text-muted-foreground leading-relaxed">
             We know that well selected and implemented solutions will optimize your
             business and improve your productivity, whatever industry you operate in.
@@ -79,10 +78,10 @@ const About8 = ({ className }: About8Props) => {
             partners and customers with next generation of enterprise solutions.
           </p>
         </div>
-      </section>
+      </div>
 
       {/* Mission Section */}
-      <section className="container max-w-6xl py-20 lg:py-32">
+      <div className="container mx-auto max-w-6xl px-6 py-20 lg:py-32">
         <div className="grid gap-12 lg:grid-cols-2 items-start">
           <div className="space-y-6">
             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Our Mission</h2>
@@ -101,22 +100,22 @@ const About8 = ({ className }: About8Props) => {
           </div>
           <div className="relative">
             <img
-              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/random14.jpeg"
-              alt="Team mission"
+              src="/images/mission-team.png"
+              alt="InTec System team collaborating on IT solutions"
               className="object-cover h-[400px] w-full rounded-md shadow-xl"
             />
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Vision Section */}
-      <section className="py-20 lg:py-32">
-        <div className="container max-w-6xl">
+      <div className="py-20 lg:py-32">
+        <div className="container mx-auto max-w-6xl px-6">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div className="order-2 lg:order-1 relative">
               <img
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw9.jpeg"
-                alt="Vision office"
+                src="/images/vision-datacenter.png"
+                alt="Modern data center representing InTec System's vision for digital transformation"
                 className="object-cover h-[450px] w-full rounded-md shadow-xl"
               />
             </div>
@@ -136,7 +135,7 @@ const About8 = ({ className }: About8Props) => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
     </section>
   );

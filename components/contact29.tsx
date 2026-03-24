@@ -180,7 +180,7 @@ const Contact29 = ({
   if (step === "success") {
     return (
       <section className={cn("relative py-20 md:py-32", className)}>
-        <motion.div {...animationProps} className="container flex flex-col justify-center">
+        <motion.div {...animationProps} className="container mx-auto max-w-6xl px-6 flex flex-col justify-center">
           <div className="mx-auto max-w-xl text-center">
             <div className="mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-green-500/10">
               <Check className="size-10 text-green-600" />
@@ -191,7 +191,7 @@ const Contact29 = ({
               you within one business day.
             </p>
             <Button
-              className="group mt-10 flex h-12 items-center justify-center gap-2 rounded-md px-8 text-base tracking-tight"
+              className="group mt-10 mx-auto flex h-12 items-center justify-center gap-2 rounded-md px-8 text-base tracking-tight"
               variant="outline"
               onClick={resetForm}
             >
@@ -206,9 +206,9 @@ const Contact29 = ({
 
   return (
     <section className={cn("relative py-20 md:py-32", className)}>
-      <motion.div {...animationProps} className="container flex flex-col justify-center">
+      <motion.div {...animationProps} className="container mx-auto max-w-6xl px-6 flex flex-col justify-center">
         {step === "select" && (
-          <div className="mx-auto w-full max-w-[1100px]">
+          <div className="mx-auto w-full max-w-6xl">
             <div className="mb-12 text-center">
               <h1 className="mb-6 text-3xl font-semibold tracking-tighter md:text-4xl lg:text-5xl">
                 {title}
@@ -279,7 +279,7 @@ const Contact29 = ({
         )}
 
         {step === "form" && (
-          <div className="mx-auto w-full max-w-[1100px] grid gap-16 lg:grid-cols-2 lg:gap-24 lg:items-start">
+          <div className="mx-auto w-full max-w-6xl grid gap-16 lg:grid-cols-2 lg:gap-24 lg:items-start">
             <div className="flex flex-col justify-start">
               <button
                 type="button"

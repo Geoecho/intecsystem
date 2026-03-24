@@ -59,21 +59,21 @@ const Services4 = ({ className }: Services4Props) => {
 
   return (
     <section className={cn("py-20 md:py-32", className)}>
-      <div className="mx-auto max-w-[1100px] px-6">
+      <div className="container mx-auto max-w-6xl px-6">
         <div className="space-y-12">
           {/* Header */}
-          <div className="mx-auto max-w-4xl text-left md:text-center">
+          <div className="max-w-4xl text-left">
             <h1 className="text-3xl font-semibold tracking-tighter md:text-4xl lg:text-5xl">
               Our Services
             </h1>
-            <p className="mt-6 text-base text-muted-foreground leading-relaxed text-left md:text-center">
+            <p className="mt-6 text-base text-muted-foreground leading-relaxed text-left">
               We provide professional IT solutions tailored to your business needs, 
               ensuring excellence and reliability in every project.
             </p>
           </div>
 
           {/* Filter Chips */}
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center sm:justify-center gap-2">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center sm:justify-start gap-2">
             {categories.map((cat) => (
               <button
                 key={cat}

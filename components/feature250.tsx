@@ -16,7 +16,7 @@ interface Feature250Props {
 const Feature250 = ({ className }: Feature250Props) => {
   return (
     <section className={cn("py-20 md:py-32", className)}>
-      <div className="mx-auto max-w-[1100px] px-6">
+      <div className="container mx-auto max-w-6xl px-6">
         <p className="mx-auto mb-4 max-w-sm text-center text-muted-foreground md:text-xl">
           Industrial Technology & Systems
         </p>

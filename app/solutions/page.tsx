@@ -47,14 +47,14 @@ export default function SolutionsPage() {
       <Navbar14 />
       <main className="flex-1 flex flex-col">
         <section className="py-20 md:py-32">
-          <div className="mx-auto max-w-[1100px] px-6">
+          <div className="container mx-auto max-w-6xl px-6">
             <div className="space-y-16">
               {/* Header — matches About page hero styling */}
-              <div className="mx-auto max-w-4xl text-left md:text-center">
+              <div className="max-w-4xl text-left">
                 <h1 className="text-3xl font-semibold tracking-tighter md:text-4xl lg:text-5xl">
                   Our Solutions
                 </h1>
-                <p className="mt-6 text-base text-muted-foreground leading-relaxed text-left md:text-center">
+                <p className="mt-6 text-base text-muted-foreground leading-relaxed text-left">
                   Enterprise-grade technology solutions designed to protect, secure 
                   and modernize your business infrastructure.
                 </p>
