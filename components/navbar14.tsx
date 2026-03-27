@@ -306,7 +306,7 @@ const Navbar14 = ({
                             .filter((s) => hasDescription(s.items))
                             .map((section, i) => (
                               <div key={section.label} className="flex flex-col gap-3">
-                                <p className="text-[10px] font-bold text-primary/80 uppercase tracking-widest">
+                                <p className="text-[10px] font-bold text-black uppercase tracking-widest">
                                   {section.label}
                                 </p>
                                 <div className="flex flex-col gap-4">
