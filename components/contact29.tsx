@@ -5,13 +5,21 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ArrowLeft,
   ArrowRight,
-  Building2,
+  BarChart2,
+  Briefcase,
   Check,
+  Cloud,
+  Code2,
+  FileText,
+  GitBranch,
+  HardDrive,
+  Headphones,
   HelpCircle,
-  Laptop,
   LoaderIcon,
-  Rocket,
-  Users,
+  Package,
+  ScanText,
+  Shield,
+  Settings,
 } from "lucide-react";
 import { useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -76,34 +84,82 @@ type ContactFormData = z.infer<typeof contactFormSchema>;
 
 const services = [
   {
-    id: "security",
-    icon: Users,
-    title: "SecurePlus Fraud Shield",
-    description: "Defense against modern financial fraud",
+    id: "hybrid-it",
+    icon: Cloud,
+    title: "Hybrid IT and Cloud Services",
+    description: "Blending private, public and managed cloud with on-premises IT for better business agility",
   },
   {
-    id: "cyber",
-    icon: Laptop,
-    title: "Cyber Security",
-    description: "Secure frameworks for network visibility",
+    id: "it-support",
+    icon: Headphones,
+    title: "IT Support Services",
+    description: "Maintenance and support options to help extend equipment uptime",
   },
   {
-    id: "infrastructure",
-    icon: Building2,
-    title: "HCI Solutions",
-    description: "Hyper-converged infrastructure solutions",
+    id: "it-security",
+    icon: Shield,
+    title: "IT Security Services",
+    description: "Protection strategies for mobile, social, cloud and big data environments",
   },
   {
-    id: "consultancy",
-    icon: Rocket,
+    id: "it-implementation",
+    icon: Settings,
+    title: "IT Implementation Services",
+    description: "Connecting IT systems, hardware and software into one cohesive body",
+  },
+  {
+    id: "it-consultancy",
+    icon: Briefcase,
     title: "IT Consultancy",
-    description: "Strategy and advisory services",
+    description: "Strategy and operations advisory to increase shareholder value",
+  },
+  {
+    id: "document-management",
+    icon: FileText,
+    title: "Document Management Services",
+    description: "One-stop shop for transitioning from paperwork to paperless",
+  },
+  {
+    id: "workflow-automation",
+    icon: GitBranch,
+    title: "Workflow Automation Services",
+    description: "Streamlining business operations and data flow across teams",
+  },
+  {
+    id: "suscriptor",
+    icon: Package,
+    title: "Suscriptor Portfolio Development",
+    description: "Custom development and configuration built on nearly 10 years of expertise",
+  },
+  {
+    id: "business-analysis",
+    icon: BarChart2,
+    title: "Business Analysis Services",
+    description: "Bridging business and IT through expert business analysts",
+  },
+  {
+    id: "custom-software",
+    icon: Code2,
+    title: "Custom Software Development",
+    description: "Custom software development and consulting to deliver your next project",
+  },
+  {
+    id: "digitalization",
+    icon: ScanText,
+    title: "Digitalization Services",
+    description: "Converting hard-copy information into secure, searchable digital records",
+  },
+  {
+    id: "backup-recovery",
+    icon: HardDrive,
+    title: "Backup and Disaster Recovery",
+    description: "Planning and procedures to keep your organisation resilient against disasters",
   },
   {
     id: "other",
     icon: HelpCircle,
     title: "Other",
-    description: "Something else entirely",
+    description: "Something else — let us know how we can help",
   },
 ];
 
@@ -145,7 +201,8 @@ const Contact29 = ({
 
   const handleServiceSelect = (serviceId: string) => {
     setSelectedService(serviceId);
-    form.setValue("serviceType", serviceId);
+    const service = services.find((s) => s.id === serviceId);
+    form.setValue("serviceType", service?.title ?? serviceId);
   };
 
   const handleContinue = () => {
@@ -223,7 +280,7 @@ const Contact29 = ({
                 const Icon = service.icon;
                 const isSelected = selectedService === service.id;
                 return (
-                  <TiltCard key={service.id} className="h-full">
+                  <TiltCard key={service.id} className={cn("h-full", service.id === "other" && "sm:col-span-2 lg:col-span-3")}>
                     <button
                       type="button"
                       onClick={() => handleServiceSelect(service.id)}
@@ -239,12 +296,7 @@ const Contact29 = ({
                           <Check className="size-4 text-primary-foreground" />
                         </div>
                       )}
-                      <div
-                        className={cn(
-                          "mb-4 flex size-14 items-center justify-center rounded-lg",
-                          isSelected ? "bg-primary/10" : "bg-muted",
-                        )}
-                      >
+                      <div className="mb-4 flex size-14 items-center justify-center rounded-lg bg-muted">
                         <Icon
                           className={cn(
                             "size-7",
@@ -307,7 +359,7 @@ const Contact29 = ({
                   const Icon = service.icon;
                   return (
                     <>
-                      <div className="flex size-12 items-center justify-center rounded-lg bg-primary/10">
+                      <div className="flex size-12 shrink-0 items-center justify-center rounded-md bg-muted/50">
                         <Icon className="size-6 text-primary" />
                       </div>
                       <div>
