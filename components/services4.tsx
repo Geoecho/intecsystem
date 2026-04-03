@@ -6,6 +6,7 @@ import { useRef, useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { SERVICES_DATA } from "@/lib/services-data";
+import { FadeIn } from "@/components/fade-in";
 
 const TiltCard = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -62,17 +63,20 @@ const Services4 = ({ className }: Services4Props) => {
       <div className="container mx-auto max-w-6xl px-6">
         <div className="space-y-12">
           {/* Header */}
-          <div className="max-w-4xl text-left">
-            <h1 className="text-3xl font-semibold tracking-tighter md:text-4xl lg:text-5xl">
-              Our Services
-            </h1>
-            <p className="mt-6 text-base text-muted-foreground leading-relaxed text-left">
-              We provide professional IT solutions tailored to your business needs, 
-              ensuring excellence and reliability in every project.
-            </p>
-          </div>
+          <FadeIn>
+            <div className="max-w-4xl text-left">
+              <h1 className="text-3xl font-semibold tracking-tighter md:text-4xl lg:text-5xl">
+                Our Services
+              </h1>
+              <p className="mt-6 text-base text-muted-foreground leading-relaxed text-left">
+                We provide professional IT solutions tailored to your business needs, 
+                ensuring excellence and reliability in every project.
+              </p>
+            </div>
+          </FadeIn>
 
           {/* Filter Chips */}
+          <FadeIn>
           <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:items-center sm:justify-start gap-2">
             {categories.map((cat) => (
               <button
@@ -89,8 +93,10 @@ const Services4 = ({ className }: Services4Props) => {
               </button>
             ))}
           </div>
+          </FadeIn>
 
           {/* Cards grid */}
+          <FadeIn>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredServices.map((service, index) => (
               <TiltCard
@@ -123,6 +129,7 @@ const Services4 = ({ className }: Services4Props) => {
               </TiltCard>
             ))}
           </div>
+          </FadeIn>
         </div>
       </div>
     </section>
