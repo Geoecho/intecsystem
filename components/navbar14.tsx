@@ -258,9 +258,7 @@ const Navbar14 = ({
       ],
     },
   ],
-  links = [
-    { label: "Partners", href: "/partners" },
-  ],
+  links = [],
   auth = {
     login: { label: "", href: "" },
     signup: { label: "Contact Us", href: "/contact" },
@@ -280,9 +278,9 @@ const Navbar14 = ({
         className,
       )}
     >
-      <div className="container mx-auto">
+      <div className="container mx-auto max-w-6xl">
         <nav className="flex items-center justify-between py-4">
-          <div className="flex items-center gap-9 lg:flex-1">
+          <div className="flex items-center gap-9 min-[1200px]:flex-1">
             <a href={logo.href} className="flex items-center gap-2">
               <img src={logo.src} alt={logo.alt} className="h-8 dark:invert" />
               {logo.title && (
@@ -291,7 +289,7 @@ const Navbar14 = ({
             </a>
           </div>
 
-          <div className="hidden flex-1 items-center justify-center lg:flex">
+          <div className="hidden flex-1 items-center justify-center min-[1200px]:flex">
             <NavigationMenu>
               <NavigationMenuList>
                 {menus.map((menu) => (
@@ -396,13 +394,13 @@ const Navbar14 = ({
           </div>
 
           <div className="flex flex-1 items-center justify-end gap-2">
-            <div className="hidden items-center gap-2 lg:flex">
+            <div className="hidden items-center gap-2 min-[1200px]:flex">
               {auth.login.label && (
                 <Button variant="outline" asChild>
                   <a href={auth.login.href}>{auth.login.label}</a>
                 </Button>
               )}
-              <Button className="group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight" asChild>
+              <Button className="group flex h-12 w-fit items-center justify-center gap-2 rounded-md px-8 text-base tracking-tight" asChild>
                 <a href={auth.signup.href}>
                   <span>Contact Us</span>
                   <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
@@ -411,7 +409,7 @@ const Navbar14 = ({
             </div>
 
             <button
-              className="flex size-10 items-center justify-center rounded-md border lg:hidden"
+              className="flex size-10 items-center justify-center rounded-md border min-[1200px]:hidden"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
@@ -441,7 +439,7 @@ const Navbar14 = ({
       </div>
 
       {isOpen && (
-        <div className="flex min-h-0 flex-1 animate-in flex-col overflow-y-auto border-t bg-background duration-200 fade-in slide-in-from-top-2 lg:hidden">
+        <div className="flex min-h-0 flex-1 animate-in flex-col overflow-y-auto border-t bg-background duration-200 fade-in slide-in-from-top-2 min-[1200px]:hidden">
           <Accordion type="single" collapsible className="w-full">
             {menus.map((menu) => (
               <AccordionItem
@@ -449,15 +447,15 @@ const Navbar14 = ({
                 value={menu.label}
                 className="border-b"
               >
-                <AccordionTrigger className="container mx-auto items-center pr-10 text-base font-medium hover:no-underline">
+                <AccordionTrigger className="px-8 items-center pr-10 text-base font-medium hover:no-underline">
                   {menu.label}
                 </AccordionTrigger>
-                <AccordionContent className="container mx-auto [&_a]:no-underline">
+                <AccordionContent className="px-8 [&_a]:no-underline">
                   <div className="space-y-5">
                     {menu.sections.map((section, i) => (
                       <div key={section.label}>
                         {i > 0 && <Separator className="mb-5" />}
-                        <p className="mb-3 text-[10px] text-muted-foreground uppercase">
+                        <p className="mb-3 text-[10px] font-bold text-primary/80 uppercase tracking-widest">
                           {section.label}
                         </p>
                         <div className="space-y-5">
@@ -466,15 +464,15 @@ const Navbar14 = ({
                               key={item.title}
                               href={item.href}
                               className={cn(
-                                "flex cursor-pointer flex-row gap-3 rounded-md transition-colors",
+                                "group flex cursor-pointer flex-row gap-3 rounded-md transition-colors hover:text-primary",
                                 !item.description && "items-center",
                               )}
                               onClick={() => setIsOpen(false)}
                             >
                               {item.description ? (
                                 <>
-                                  <span className="flex size-8 shrink-0 items-center justify-center rounded-md border border-border bg-background">
-                                    <item.icon className="size-4" />
+                                  <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-muted/50 transition-colors group-hover:bg-primary/10">
+                                    <item.icon className="size-4 text-primary" />
                                   </span>
                                   <div className="flex min-w-0 flex-col">
                                     <span className="text-sm leading-tight font-medium">
@@ -487,7 +485,9 @@ const Navbar14 = ({
                                 </>
                               ) : (
                                 <>
-                                  <item.icon className="size-4" />
+                                  <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-muted/50 transition-colors group-hover:bg-primary/10">
+                                    <item.icon className="size-4 text-primary" />
+                                  </span>
                                   <span className="text-sm font-medium">
                                     {item.title}
                                   </span>
@@ -540,11 +540,11 @@ const Navbar14 = ({
               href={link.href}
               className="block border-b border-border py-4 text-base font-medium transition-colors"
             >
-              <span className="container mx-auto block">{link.label}</span>
+              <span className="px-8 block">{link.label}</span>
             </a>
           ))}
 
-          <div className="container mx-auto mt-auto flex flex-col gap-2 py-8">
+          <div className="px-8 mt-auto flex flex-col gap-2 py-8">
             {auth.login.label && (
               <Button variant="outline" className="w-full" asChild>
                 <a href={auth.login.href}>{auth.login.label}</a>

@@ -2,10 +2,8 @@
 
 import NumberFlow from "@number-flow/react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface Stats15Props {
@@ -13,9 +11,8 @@ interface Stats15Props {
 }
 
 const Stats15 = ({ className }: Stats15Props) => {
-  const sectionRef = useRef(null);
-  const IllustrationRef = useRef(null);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const Stats = {
     2021: {
@@ -23,28 +20,24 @@ const Stats15 = ({ className }: Stats15Props) => {
       Professionals: 25,
       Projects: 120,
       SupportAvailability: 24,
-      PathHeight: 0,
     },
     2022: {
       YearsInBusiness: 19,
       Professionals: 30,
       Projects: 150,
       SupportAvailability: 24,
-      PathHeight: 55,
     },
     2023: {
       YearsInBusiness: 20,
       Professionals: 35,
       Projects: 175,
       SupportAvailability: 24,
-      PathHeight: 105,
     },
     2024: {
       YearsInBusiness: 21,
       Professionals: 40,
       Projects: 200,
       SupportAvailability: 24,
-      PathHeight: 160,
     },
   };
 
@@ -56,164 +49,119 @@ const Stats15 = ({ className }: Stats15Props) => {
     SupportAvailability: 0,
   });
 
-  // Use a manual IntersectionObserver for reliable desktop detection
+  // Use plain scroll listener with scrollY > 50 guard so the animation only
+  // fires after the user has actually scrolled — not on large desktop viewports
+  // where the section may already be partially visible on initial page load.
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (hasAnimated) return;
+    const el = sectionRef.current;
+    if (!el) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated) {
-            setHasAnimated(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+    const check = () => {
+      const scrolled = Math.max(
+        window.scrollY || 0,
+        document.documentElement.scrollTop || 0,
+        document.body.scrollTop || 0
+      );
+      if (scrolled < 50) return; // must have scrolled past the hero first
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
+        setHasAnimated(true);
+      }
+    };
 
-    observer.observe(sectionRef.current);
-    return () => observer.disconnect();
+    // Also listen on body — when both html+body have overflow-x:hidden,
+    // body becomes the scroll container on desktop and events only fire there.
+    window.addEventListener("scroll", check, { passive: true });
+    document.addEventListener("scroll", check, { passive: true });
+    document.body.addEventListener("scroll", check, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", check);
+      document.removeEventListener("scroll", check);
+      document.body.removeEventListener("scroll", check);
+    };
   }, [hasAnimated]);
 
-  // Trigger the count-up animation after the numbers area is visible
+  // Delay count-up by 400ms after scroll trigger so numbers animate while visible
   useEffect(() => {
     if (hasAnimated) {
-      const timeout = setTimeout(() => {
+      const t = setTimeout(() => {
         setDisplayValue(Stats[selectedYear as keyof typeof Stats]);
-      }, 300);
-      return () => clearTimeout(timeout);
+      }, 400);
+      return () => clearTimeout(t);
     }
   }, [hasAnimated, selectedYear]);
-
 
   const years = Object.keys(Stats).map(Number);
 
   return (
-    <section className={cn("py-20 md:py-32", className)}>
-      <div className="container mx-auto max-w-6xl px-6 flex flex-col items-center gap-8 lg:gap-16">
-        <div className="z-10 flex flex-col items-center text-center">
-          <h2 className="max-w-xl text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Numbers that speak for themselves">
+    <motion.section
+      ref={sectionRef}
+      className={cn("py-20 md:py-32", className)}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+    >
+      <div className="container mx-auto max-w-6xl">
+        {/* Heading + subtitle — centered */}
+        <div className="mb-16 text-center">
+          <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Numbers that speak for themselves">
             Numbers that speak for themselves
           </h2>
-          <p className="mt-4 max-w-xl text-muted-foreground/80">
-            Over two decades of delivering reliable digital infrastructure and security solutions across Africa and beyond.
+          <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-muted-foreground md:text-xl">
+            Real results, measured year over year — from growing teams and completed projects to uninterrupted client support.
           </p>
-          <div className="my-10 flex w-full max-w-sm flex-col items-center justify-center gap-4 mx-auto">
-            <Button
-              variant="default"
-              className="text-md group flex h-12 w-full items-center justify-center gap-2 rounded-md px-8 text-base tracking-tight"
-              asChild
+        </div>
+
+        {/* Year selector — full width */}
+        <div className="grid w-full grid-cols-2 md:grid-cols-4 gap-3">
+          {years.map((year) => (
+            <button
+              key={year}
+              onClick={() => setSelectedYear(year)}
+              className={`w-full rounded-md px-4 py-3 text-sm font-medium transition-all ease-out ${
+                selectedYear === year
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "bg-muted/70 hover:bg-muted"
+              }`}
             >
-              <a href="/contact">
-                <span>Get Started</span>
-                <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
-              </a>
-            </Button>
+              {year} – {year + 1}
+            </button>
+          ))}
+        </div>
+
+        {/* Stats numbers — same full-width grid */}
+        <div className="mt-4 grid w-full grid-cols-2 gap-y-8 gap-x-4 md:grid-cols-4">
+          <div className="text-center">
+            <h3 className="text-4xl font-medium lg:text-5xl">
+              <NumberFlow value={displayValue.YearsInBusiness} suffix="+" />
+            </h3>
+            <p className="mt-2 text-sm text-muted-foreground/70">Years in Business</p>
           </div>
-          <div
-            className="mt-12 flex w-full max-w-full flex-col items-center justify-between md:mt-16 xl:bg-transparent"
-          >
-            <div ref={sectionRef} className="mt-auto mb-10 grid w-full grid-cols-2 gap-8 md:grid-cols-4 md:gap-4">
-              <div className="w-full text-center">
-                <h3 className="text-4xl font-medium lg:text-5xl">
-                  <NumberFlow
-                    value={displayValue.YearsInBusiness}
-                    suffix="+"
-                  />
-                </h3>
-                <p className="mt-2 text-sm whitespace-pre text-muted-foreground/70">
-                  {" "}Years in Business{" "}
-                </p>
-              </div>
-              <div className="w-full text-center">
-                <h3 className="text-4xl font-medium lg:text-5xl">
-                  <NumberFlow
-                    value={displayValue.Professionals}
-                    suffix="+"
-                  />
-                </h3>
-                <p className="mt-2 text-sm whitespace-pre text-muted-foreground/70">
-                  {" "}Professionals{" "}
-                </p>
-              </div>
-              <div className="w-full text-center">
-                <h3 className="text-4xl font-medium lg:text-5xl">
-                  <NumberFlow
-                    value={displayValue.Projects}
-                    suffix="+"
-                  />
-                </h3>
-                <p className="mt-2 text-sm whitespace-pre text-muted-foreground/70">
-                  {" "}Successful Projects{" "}
-                </p>
-              </div>
-              <div ref={IllustrationRef} className="w-full text-center">
-                <h3 className="text-4xl font-medium lg:text-5xl">
-                  <NumberFlow
-                    value={displayValue.SupportAvailability}
-                    suffix="/7"
-                  />
-                </h3>
-                <p className="mt-2 text-sm whitespace-pre text-muted-foreground/70">
-                  {" "}Customer Support{" "}
-                </p>
-              </div>
-            </div>
+          <div className="text-center">
+            <h3 className="text-4xl font-medium lg:text-5xl">
+              <NumberFlow value={displayValue.Professionals} suffix="+" />
+            </h3>
+            <p className="mt-2 text-sm text-muted-foreground/70">Professionals</p>
+          </div>
+          <div className="text-center">
+            <h3 className="text-4xl font-medium lg:text-5xl">
+              <NumberFlow value={displayValue.Projects} suffix="+" />
+            </h3>
+            <p className="mt-2 text-sm text-muted-foreground/70">Successful Projects</p>
+          </div>
+          <div className="text-center">
+            <h3 className="text-4xl font-medium lg:text-5xl">
+              <NumberFlow value={displayValue.SupportAvailability} suffix="/7" />
+            </h3>
+            <p className="mt-2 text-sm text-muted-foreground/70">Customer Support</p>
           </div>
         </div>
 
-        <div className="relative grid w-full max-w-6xl grid-cols-2 md:grid-cols-4 gap-3 mx-auto mt-8 px-6">
-          {years.map((year) => (
-            <div key={year} className="group">
-              <button
-                onClick={() => setSelectedYear(year)}
-                className={`relative w-full rounded-md px-4 py-3 text-sm font-medium transition-all ease-out ${
-                  selectedYear === year
-                    ? "bg-primary text-primary-foreground shadow-sm"
-                    : "bg-muted/70 hover:bg-muted"
-                }`}
-              >
-                {year} - {year + 1}
-              </button>
-            </div>
-          ))}
-        </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
 export { Stats15 };
-
-const LinkIllustration = ({ className = "", PathHeight = 0 }) => {
-  return (
-    <svg
-      width="280"
-      height="124"
-      viewBox="0 0 412 178"
-      overflow="visible"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <motion.path
-        initial={{ pathLength: 0 }}
-        animate={{ pathLength: 1 }}
-        transition={{ duration: 1 }}
-        key={PathHeight}
-        d={`M408.308 ${PathHeight}H294L114.965 274H1`}
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-      <motion.path
-        d={`M408.308 ${PathHeight}H294L114.965 274H1`}
-        stroke="black"
-        strokeWidth="1.5"
-        opacity="0.1"
-      />
-      <circle cx="408.309" cy={PathHeight} r="5" fill="currentColor" />
-      <circle cx="2" cy="274" r="5" fill="currentColor" />
-    </svg>
-  );
-};

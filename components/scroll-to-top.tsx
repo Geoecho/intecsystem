@@ -19,7 +19,7 @@ export function ScrollToTop() {
   // Also handle route changes if needed, though Next.js usually handles this.
   // We'll keep it simple for "always start from top on refresh/everywhere"
   useEffect(() => {
-    window.scrollTo(0, 0);
+    requestAnimationFrame(() => window.scrollTo(0, 0));
   }, [pathname]);
 
   return null;

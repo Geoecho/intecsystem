@@ -16,7 +16,7 @@ interface Feature250Props {
 const Feature250 = ({ className }: Feature250Props) => {
   return (
     <section className={cn("py-20 md:py-32", className)}>
-      <div className="container mx-auto max-w-6xl px-6">
+      <div className="container mx-auto max-w-6xl">
         <p className="mx-auto mb-4 max-w-sm text-center text-muted-foreground md:text-xl">
           Industrial Technology & Systems
         </p>
@@ -114,7 +114,7 @@ function AnimatedBeamIllustration() {
         <Button
           variant="default"
           ref={div7Ref}
-          className="z-10 mt-40 group flex h-10 w-fit items-center justify-center gap-2 rounded-md px-6 tracking-tight lg:mt-0"
+          className="z-10 mt-40 group flex h-12 w-fit items-center justify-center gap-2 rounded-md px-8 text-base tracking-tight lg:mt-0"
           asChild
         >
           <a href="/contact">

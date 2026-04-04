@@ -64,13 +64,13 @@ const certifications = [
 const Awards4 = ({ className }: Awards4Props) => {
   return (
     <section className={cn("relative overflow-hidden py-20 md:py-32", className)}>
-      <div className="relative z-20 container mx-auto max-w-6xl px-6">
+      <div className="relative z-20 container mx-auto max-w-6xl">
         <div className="relative space-y-16">
         <div className="relative flex flex-col gap-4 text-right items-end">
           <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Certifications">
             Certifications
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg tracking-tight text-muted-foreground md:text-xl">
             Certified through{" "}
             <span className="font-semibold text-foreground">TÜV NORD</span>{" "}
             across six international ISO standards.

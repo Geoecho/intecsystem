@@ -35,17 +35,27 @@ const DATA: DataItem[] = [
 const Hero245 = ({ className }: Hero245Props) => {
   return (
     <section
-      className={cn("relative grid w-full overflow-hidden pt-25 pb-20 md:pt-48 md:pb-32", className)}
+      className={cn(
+        "relative w-full overflow-hidden",
+        // Mobile: slightly reduced top so content feels balanced
+        "grid pt-14 pb-10",
+        // Tablet (768–1199px): flex column so text+logos are centred together as one block
+        "md:flex md:flex-col md:justify-center md:min-h-[calc(100vh-65px)] md:pt-0 md:pb-0",
+        // Desktop (1200px+): revert to block with spacious static padding
+        "min-[1200px]:block min-[1200px]:min-h-0 min-[1200px]:pt-48 min-[1200px]:pb-32",
+        className,
+      )}
     >
-      <div className="relative z-10 container mx-auto max-w-6xl px-6 h-full grid-cols-1 items-start md:items-center justify-start md:justify-center gap-6 pt-0 md:pt-0">
+      <div className="relative z-10 container mx-auto max-w-6xl h-full grid-cols-1 items-start md:items-center justify-start md:justify-center gap-6
+        min-[1200px]:block min-[1200px]:py-0">
         <div className="flex flex-col items-start md:items-center justify-start md:justify-center text-left md:text-center">
           <h1 className="max-w-4xl text-left md:text-center text-4xl font-semibold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
             Where creativity & technology
-            <PointerHighlight containerClassName="inline-block ml-2 md:ml-3">
+            <PointerHighlight containerClassName="block md:inline-block md:ml-3">
               <span className="text-primary">intersect.</span>
             </PointerHighlight>
           </h1>
-          <p className="mt-6 md:mt-10 max-w-lg text-left md:text-center text-muted-foreground">
+          <p className="mt-6 md:mt-10 max-w-3xl text-left md:text-center text-lg tracking-tight text-muted-foreground md:text-xl">
             Over two decades of delivering reliable digital infrastructure,
             cutting-edge security, and seamless system integration solutions worldwide.
           </p>
@@ -74,7 +84,7 @@ const Hero245 = ({ className }: Hero245Props) => {
       </div>
 
       {/* Marquee Section Integrated into Hero */}
-      <div className="mx-auto max-w-[1100px] px-6 overflow-hidden mt-12 md:mt-20">
+      <div className="mx-auto max-w-[1100px] px-8 overflow-hidden mt-12 md:mt-20">
         <div className="relative overflow-hidden before:absolute before:inset-y-0 before:left-0 before:z-10 before:w-20 before:bg-linear-to-r before:from-background before:to-transparent after:absolute after:inset-y-0 after:right-0 after:z-10 after:w-20 after:bg-linear-to-l after:from-background after:to-transparent">
           <div className="flex w-max animate-marquee gap-16 py-2">
             {/* First marquee group */}

@@ -41,7 +41,7 @@ interface Faq9Props {
 const Faq9 = ({ className }: Faq9Props) => {
   return (
     <section className={cn("py-20 md:py-32", className)}>
-      <div className="container mx-auto max-w-6xl px-6">
+      <div className="container mx-auto max-w-6xl">
         <div className="mb-12 flex flex-col items-start text-left gap-4">
           <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Questions?">
             Questions?
@@ -58,7 +58,7 @@ const Faq9 = ({ className }: Faq9Props) => {
               className="mb-4 rounded-md border border-border bg-background/80 px-8 py-4 backdrop-blur-sm last:mb-0"
             >
               <AccordionTrigger className="text-left text-lg font-semibold hover:no-underline">
-                {faq.question}
+                <span className="pr-6">{faq.question}</span>
               </AccordionTrigger>
               <AccordionContent className="text-base text-muted-foreground">
                 {faq.answer}

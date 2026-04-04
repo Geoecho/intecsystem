@@ -17,12 +17,12 @@ const Feature281 = ({ className }: Feature281Props) => {
 
   return (
     <section className={cn("relative h-full w-full overflow-hidden py-20 md:py-32", className)}>
-      <div className="relative z-20 container mx-auto max-w-6xl px-6 flex w-full flex-col">
+      <div className="relative z-20 container mx-auto max-w-6xl flex w-full flex-col">
         <div className="relative flex flex-col gap-4 text-center items-center">
           <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Client Testimonials">
             Client Testimonials
           </h2>
-          <p className="max-w-2xl text-lg text-muted-foreground">
+          <p className="max-w-2xl text-lg tracking-tight text-muted-foreground md:text-xl">
             Trusted by organizations across the region for over two decades.
           </p>
         </div>

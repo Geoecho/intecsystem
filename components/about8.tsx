@@ -20,7 +20,7 @@ const About8 = ({ className }: About8Props) => {
   return (
     <section className={cn("py-20 md:py-32", className)}>
       {/* About Company Hero */}
-      <div className="container mx-auto max-w-6xl px-6 mb-12 md:mb-16">
+      <div className="container mx-auto max-w-6xl mb-12 md:mb-16">
         <div className="flex flex-col items-start justify-start text-left">
           <h1 className="text-3xl font-semibold tracking-tighter md:text-4xl lg:text-5xl">
             About Company
@@ -36,7 +36,7 @@ const About8 = ({ className }: About8Props) => {
       </div>
 
       {/* Why Us? Stats Section */}
-      <div className="container mx-auto max-w-6xl px-6 border-y py-12">
+      <div className="container mx-auto max-w-6xl border-y py-12">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 text-left">
           <div>
             <h3 className="text-4xl font-medium tracking-tight md:text-5xl lg:text-6xl">
@@ -81,7 +81,7 @@ const About8 = ({ className }: About8Props) => {
       </div>
 
       {/* Mission Section */}
-      <div className="container mx-auto max-w-6xl px-6 py-20 lg:py-32">
+      <div className="container mx-auto max-w-6xl py-20 lg:py-32">
         <div className="grid gap-12 lg:grid-cols-2 items-start">
           <div className="space-y-6">
             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">Our Mission</h2>
@@ -110,7 +110,7 @@ const About8 = ({ className }: About8Props) => {
 
       {/* Vision Section */}
       <div className="py-20 lg:py-32">
-        <div className="container mx-auto max-w-6xl px-6">
+        <div className="container mx-auto max-w-6xl">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div className="order-2 lg:order-1 relative">
               <img

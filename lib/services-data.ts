@@ -32,6 +32,7 @@ export const SERVICES_DATA = [
     shortDescription: "Seamlessly blend private, public and managed cloud with existing on-premises IT.",
     description: "Hybrid IT seamlessly blends private, public and managed cloud with existing on-premises IT, to improve business agility, accessibility and deliver better business outcomes — all within a prudent IT budget.",
     icon: Cloud,
+    iconName: "Cloud",
     items: [
       "Cleverly architected and seamlessly integrated IT environment",
       "Governance framework that adapts and evolves with business needs",
@@ -54,6 +55,7 @@ export const SERVICES_DATA = [
     shortDescription: "Extend equipment uptime with certified service technicians.",
     description: "InTec System offers a wide variety of maintenance service options to help you extend your equipment uptime. One call will bring a certified service technician to your facility fast.",
     icon: LifeBuoy,
+    iconName: "LifeBuoy",
     items: [
       "Mission-critical equipment operating at optimal levels",
       "Minimized business interruptions from equipment malfunction",
@@ -76,6 +78,7 @@ export const SERVICES_DATA = [
     shortDescription: "Advanced protection for disruptive technologies and enterprise data.",
     description: "At Intec System, we draw on our deep expertise of a large pool of experienced security professionals to offer IT security solutions from leading vendors that address the key challenges faced by enterprises today.",
     icon: ShieldCheck,
+    iconName: "ShieldCheck",
     items: [
       "Identity and access governance",
       "Data protection",
@@ -100,6 +103,7 @@ export const SERVICES_DATA = [
     shortDescription: "Connect various IT systems into one cohesive, well-functioning body.",
     description: "Intec System IT Integration Services aims to connect various IT systems, hardware and software into one cohesive and well-functioning body, building an efficient and safe environment.",
     icon: Wrench,
+    iconName: "Wrench",
     items: [
       "Analysis and design of IT platforms",
       "Implementation and migration of IT solutions",
@@ -124,6 +128,7 @@ export const SERVICES_DATA = [
     shortDescription: "Improve strategy and operations to increase shareholder value.",
     description: "InTec System partners with clients to help them improve their strategy and operations, with goal of increasing shareholder value and corporate earnings.",
     icon: Briefcase,
+    iconName: "Briefcase",
     items: [
       "Strategy and operations improvement",
       "Tailored solutions for specific needs",
@@ -146,6 +151,7 @@ export const SERVICES_DATA = [
     shortDescription: "Transition from paperwork to paperless easily.",
     description: "Intec System offers a one stop shop for organizations to make the transition from paperwork to paperless easily, including system design, outsourcing, project management and training.",
     icon: FileText,
+    iconName: "FileText",
     items: [
       "Examine existing paper processes",
       "Identify cost savings with automation & digitization",
@@ -170,6 +176,7 @@ export const SERVICES_DATA = [
     shortDescription: "Automate workflows so business processes run with far lower overheads.",
     description: "At InTec System, we help organizations automate workflows so that business processes are followed with far lower overheads. We analyse, suggest improvements, and apply technology.",
     icon: RefreshCw,
+    iconName: "RefreshCw",
     items: [
       "Current business process analysis",
       "Process improvement suggestions",
@@ -192,6 +199,7 @@ export const SERVICES_DATA = [
     shortDescription: "Free information trapped in documents and accelerate business workflows.",
     description: "We've poured nearly 10 years of daily work into Suscriptor's development. With hands-on experience and expertise, we develop and customize requirements on our Suscriptor platform.",
     icon: FileSearch,
+    iconName: "FileSearch",
     items: [
       "Archiving management",
       "Procurement management",
@@ -216,6 +224,7 @@ export const SERVICES_DATA = [
     shortDescription: "Bringing business and IT closer together for aligned success.",
     description: "Our business analysis services are designed to bring business and IT even closer together. Our business analysts are experts at identifying and understanding your business needs.",
     icon: Search,
+    iconName: "Search",
     items: [
       "Aligning business goals to IT deliverables",
       "Requirements management & analysis",
@@ -239,6 +248,7 @@ export const SERVICES_DATA = [
     shortDescription: "Pull off your next project with less stress and less cost.",
     description: "We offer custom software development and consulting services to help you pull off your next project with less stress and less cost, powering you at every stage of your product development lifecycle.",
     icon: Code,
+    iconName: "Code",
     items: [
       "Market and competitive analysis",
       "Feasibility study and proof of concept",
@@ -261,6 +271,7 @@ export const SERVICES_DATA = [
     shortDescription: "Document conversion and digital asset processing at scale.",
     description: "InTec System provides services that can handle your document conversion projects. We have capacity, know-how, and experience to digitize your assets at our center or your location.",
     icon: BookOpen,
+    iconName: "BookOpen",
     items: [
       "Document conversion projects",
       "On-site or off-site digitization",
@@ -283,6 +294,7 @@ export const SERVICES_DATA = [
     shortDescription: "Business continuity planning to protect your data lifeline.",
     description: "Your data is the lifeline of your business. With Intec System as your reliable partner in Business Continuity Planning and Disaster Recovery, you can rely on our experts.",
     icon: HardDrive,
+    iconName: "HardDrive",
     items: [
       "Solutions covering all disaster scenarios",
       "Decreased downtime with practical recovery strategies",
@@ -309,6 +321,7 @@ export const SOLUTIONS_DATA = [
     shortDescription: "Cutting-edge fraud prevention specifically for the financial sector.",
     description: "SecurePlus delivers comprehensive, automated protection against fraudulent activities across multiple channels, including online and mobile banking.",
     icon: ShieldCheck,
+    iconName: "ShieldCheck",
     items: [
       "Fraud Management Automation",
       "Account Takeover (ATO) Detection",
@@ -328,6 +341,7 @@ export const SOLUTIONS_DATA = [
     shortDescription: "Establishing secure frameworks for increased visibility.",
     description: "We provide end-to-end cybersecurity frameworks that increase sensitivity and visibility across your entire network infrastructure, protecting against modern threats.",
     icon: ShieldCheck,
+    iconName: "ShieldCheck",
     items: ["Network Visibility", "Threat Detection", "Vulnerability Management", "SIEM & SOC", "Penetration Testing", "Security Training"],
     expertise: [
       { id: 1, title: "Full Visibility", description: "Complete network oversight" },
@@ -342,6 +356,7 @@ export const SOLUTIONS_DATA = [
     shortDescription: "Software-centric architecture integrating all resources.",
     description: "Our HCI solutions integrate compute, storage, networking and virtualization into a single software-centric architecture that simplifies operations and reduces costs.",
     icon: Database,
+    iconName: "Database",
     items: ["Compute Integration", "Software-Defined Storage", "Network Virtualization", "Unified Management", "Elastic Scaling", "Simplified Operations"],
     expertise: [
       { id: 1, title: "All-in-One", description: "Converged infrastructure stack" },
@@ -360,6 +375,7 @@ export const CERTIFICATIONS_DATA = [
     shortDescription: "Ensuring consistent product and service quality through systematic process management.",
     description: "ISO 9001:2015 is the international standard for a quality management system. It provides a framework for organizations to ensure they meet the needs of customers and other stakeholders while meeting statutory and regulatory requirements.",
     icon: CheckCircle2,
+    iconName: "CheckCircle2",
     items: [
       "Enhanced customer satisfaction through consistent service",
       "Process optimization and operational efficiency",
@@ -380,6 +396,7 @@ export const CERTIFICATIONS_DATA = [
     shortDescription: "Minimizing environmental impact through measurable sustainable business practices.",
     description: "ISO 14001:2015 sets out the criteria for an environmental management system. It maps out a framework that a company or organization can follow to set up an effective environmental management system.",
     icon: Leaf,
+    iconName: "Leaf",
     items: [
       "Reduced environmental footprint and waste production",
       "Compliance with current and future environmental legislation",
@@ -400,6 +417,7 @@ export const CERTIFICATIONS_DATA = [
     shortDescription: "Delivering managed IT services that meet rigorous international industry standards.",
     description: "ISO/IEC 20000-1:2011 is a service management system (SMS) standard. It specifies requirements for the service provider to plan, establish, implement, operate, monitor, review, maintain and improve an SMS.",
     icon: Headset,
+    iconName: "Headset",
     items: [
       "Alignment of IT services with business priorities",
       "Improved reliability and availability of IT systems",
@@ -420,6 +438,7 @@ export const CERTIFICATIONS_DATA = [
     shortDescription: "Protecting client data and organizational assets through robust security controls.",
     description: "ISO/IEC 27001:2013 specifies the requirements for establishing, implementing, maintaining and continually improving an information security management system.",
     icon: Lock,
+    iconName: "Lock",
     items: [
       "Robust protection against unauthorized data access",
       "Comprehensive risk assessment and threat monitoring",
@@ -440,6 +459,7 @@ export const CERTIFICATIONS_DATA = [
     shortDescription: "Managing organizational records with precision, integrity, and full traceability.",
     description: "ISO 30301:2019 specifies the requirements for a Management System for Records (MSR). It provides a framework for creating and managing authentic, reliable and useable records.",
     icon: FolderArchive,
+    iconName: "FolderArchive",
     items: [
       "Systematic control of organizational information",
       "Full traceability and auditability of records",
@@ -460,6 +480,7 @@ export const CERTIFICATIONS_DATA = [
     shortDescription: "Safeguarding the well-being of our people with industry-leading safety standards.",
     description: "ISO 45001:2018 specifies requirements for an occupational health and safety (OH&S) management system, to enable an organization to provide safe and healthy workplaces.",
     icon: HardHat,
+    iconName: "HardHat",
     items: [
       "Prevention of work-related injury and ill health",
       "Proactive identification and control of OH&S risks",

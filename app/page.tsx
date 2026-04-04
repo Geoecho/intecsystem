@@ -20,11 +20,7 @@ export default function Home() {
         <Hero245 />
       </FadeIn>
 
-      <FadeIn>
-        <section>
-          <Stats15 />
-        </section>
-      </FadeIn>
+      <Stats15 />
 
       <FadeIn>
         <section>

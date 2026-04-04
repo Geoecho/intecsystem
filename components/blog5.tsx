@@ -217,7 +217,7 @@ const Blog5 = ({ className }: Blog5Props) => {
 
   return (
     <section className={cn("py-20 md:py-32", className)}>
-      <div className="container mx-auto max-w-6xl px-6">
+      <div className="container mx-auto max-w-6xl">
         <div className="mb-12 md:mb-16">
           <div className="flex flex-col items-start justify-start text-left">
             <h1 className="text-3xl font-semibold tracking-tighter md:text-4xl lg:text-5xl">

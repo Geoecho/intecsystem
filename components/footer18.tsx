@@ -1,11 +1,4 @@
 "use client";
-import {
-  Facebook,
-  Github,
-  Linkedin,
-  Twitter,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const LOGO = "/images/logo.svg";
@@ -71,7 +64,7 @@ const NAVIGATION = [
     links: [
       {
         name: "Bul. Jane Sandanski 113, 1000 Skopje",
-        href: "https://goo.gl/maps/qF4X9XqQy8X8X8X88",
+        href: "https://maps.google.com/?q=Bul.+Jane+Sandanski+113,+1000+Skopje",
       },
       {
         name: "+389 2 2401 500",
@@ -93,7 +86,7 @@ interface Footer18Props {
 const Footer18 = ({ className }: Footer18Props) => {
   return (
     <section className={cn("py-20 border-t bg-muted/20", className)}>
-      <footer className="container max-w-6xl">
+      <footer className="container mx-auto max-w-6xl">
         <nav className="flex flex-col gap-[2.25rem] lg:flex-row">
           <div className="flex w-full flex-col gap-9 lg:w-1/4">
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}

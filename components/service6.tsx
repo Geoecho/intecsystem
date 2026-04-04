@@ -1,19 +1,30 @@
 "use client";
 
-import { 
+import {
   ArrowLeft,
-  CheckCircle2
+  ArrowRight,
+  CheckCircle2,
+  Cloud, LifeBuoy, ShieldCheck, Wrench, Briefcase, FileText, RefreshCw,
+  FileSearch, Search, Code, BookOpen, HardDrive, Database, Headset,
+  Leaf, Lock, FolderArchive, HardHat,
+  type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/fade-in";
 
+const ICON_MAP: Record<string, LucideIcon> = {
+  Cloud, LifeBuoy, ShieldCheck, Wrench, Briefcase, FileText, RefreshCw,
+  FileSearch, Search, Code, BookOpen, HardDrive, Database, Headset,
+  CheckCircle2, Leaf, Lock, FolderArchive, HardHat,
+};
+
 interface Service6Props {
   service: {
     title: string;
     description: string;
-    icon: any;
+    iconName?: string;
     expertise: { id: number; title: string; description: string }[];
     detailedContent: string;
     items: string[];
@@ -24,11 +35,11 @@ interface Service6Props {
 }
 
 const Service6 = ({ service, backHref = "/services", backLabel = "Back to Services", className }: Service6Props) => {
-  const Icon = service.icon;
+  const Icon = (service.iconName && ICON_MAP[service.iconName]) || CheckCircle2;
 
   return (
     <section className={cn("py-20 md:py-32", className)}>
-      <div className="container mx-auto max-w-6xl px-6">
+      <div className="container mx-auto max-w-6xl">
         {/* Back Button */}
         <FadeIn>
           <div className="mb-12">
@@ -54,7 +65,7 @@ const Service6 = ({ service, backHref = "/services", backLabel = "Back to Servic
               <h1 className="text-4xl font-semibold tracking-tighter md:text-5xl lg:text-6xl">
                 {service.title}
               </h1>
-              <p className="text-xl leading-relaxed text-muted-foreground max-w-2xl">
+              <p className="text-xl leading-relaxed text-muted-foreground">
                 {service.description}
               </p>
             </div>
@@ -80,9 +91,9 @@ const Service6 = ({ service, backHref = "/services", backLabel = "Back to Servic
 
         {/* Main Content */}
         <FadeIn>
-          <div className="mx-auto mb-20 max-w-6xl px-6">
+          <div className="mb-20">
             <div 
-              className="prose prose-lg dark:prose-invert prose-p:text-muted-foreground prose-p:leading-relaxed mb-12"
+              className="prose prose-lg max-w-none dark:prose-invert prose-p:text-muted-foreground prose-p:leading-relaxed mb-12"
               dangerouslySetInnerHTML={{ __html: service.detailedContent }}
             />
           </div>
@@ -92,11 +103,14 @@ const Service6 = ({ service, backHref = "/services", backLabel = "Back to Servic
         <FadeIn>
           <div className="rounded-2xl bg-primary p-8 md:p-12 text-left text-primary-foreground shadow-xl">
             <h2 className="mb-6 text-2xl md:text-3xl font-semibold tracking-tight">Need a customized solution?</h2>
-            <p className="mb-10 text-lg opacity-90 max-w-xl">
+            <p className="mb-10 text-lg opacity-90">
               Our experts are ready to help you implement the perfect strategy for your business.
             </p>
-            <Button size="lg" variant="secondary" asChild className="w-full md:w-auto px-8 font-semibold">
-              <Link href="/contact">Get in Touch</Link>
+            <Button variant="secondary" asChild className="group flex h-12 w-full md:w-auto items-center justify-center gap-2 rounded-md px-8 text-base tracking-tight">
+              <Link href="/contact">
+                Get in Touch
+                <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
+              </Link>
             </Button>
           </div>
         </FadeIn>
