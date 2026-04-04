@@ -17,6 +17,7 @@ const TiltCard = ({ children, className }: { children: React.ReactNode; classNam
   const ref = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     const card = ref.current;
     if (!card) return;
     const rect = card.getBoundingClientRect();
@@ -30,6 +31,7 @@ const TiltCard = ({ children, className }: { children: React.ReactNode; classNam
   };
 
   const handleMouseLeave = () => {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     if (ref.current) ref.current.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
   };
 
@@ -78,11 +80,11 @@ const Services10 = ({ className }: Services10Props) => {
 
   return (
     <section className={cn("relative overflow-hidden py-20 md:py-32", className)}>
-      <div className="relative z-20 container mx-auto max-w-6xl px-6">
+      <div className="relative z-20 container mx-auto max-w-6xl">
         <div className="relative space-y-16">
           <div className="relative space-y-4 text-left">
-            <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Our Services">
-              Our Services
+            <h2 className="text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl" aria-label="Our Solutions">
+              Our Solutions
             </h2>
             <p className="max-w-2xl text-lg tracking-tight text-muted-foreground md:text-xl">
               World-class digital solutions tailored to your specific business needs and growth objectives.

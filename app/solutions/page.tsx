@@ -48,22 +48,22 @@ export default function SolutionsPage() {
       <Navbar14 />
       <main className="flex-1 flex flex-col">
         <section className="py-20 md:py-32">
-          <div className="container mx-auto max-w-6xl px-6">
+          <div className="container mx-auto max-w-6xl">
             <div className="space-y-16">
-              {/* Header — matches About page hero styling */}
+              {/* Header */}
               <FadeIn>
                 <div className="max-w-4xl text-left">
                   <h1 className="text-3xl font-semibold tracking-tighter md:text-4xl lg:text-5xl">
                     Our Solutions
                   </h1>
-                  <p className="mt-6 text-base text-muted-foreground leading-relaxed text-left">
-                    Enterprise-grade technology solutions designed to protect, secure 
+                  <p className="mt-6 text-lg tracking-tight text-muted-foreground md:text-xl">
+                    Enterprise-grade technology solutions designed to protect, secure
                     and modernize your business infrastructure.
                   </p>
                 </div>
               </FadeIn>
 
-              {/* Cards grid — matches Services10 home page card design */}
+              {/* Cards grid */}
               <FadeIn>
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
                   {SOLUTIONS_DATA.map((solution, index) => (
@@ -96,6 +96,22 @@ export default function SolutionsPage() {
                       </div>
                     </TiltCard>
                   ))}
+                </div>
+              </FadeIn>
+
+              {/* Contact CTA */}
+              <FadeIn>
+                <div className="rounded-2xl bg-primary p-8 md:p-12 text-left text-primary-foreground shadow-xl">
+                  <h2 className="mb-6 text-2xl md:text-3xl font-semibold tracking-tight">Need a customized solution?</h2>
+                  <p className="mb-10 text-lg opacity-90">
+                    Our experts are ready to help you implement the perfect strategy for your business.
+                  </p>
+                  <Button variant="secondary" asChild className="group flex h-12 w-full md:w-auto items-center justify-center gap-2 rounded-md px-8 text-base tracking-tight">
+                    <Link href="/contact">
+                      Get in Touch
+                      <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
+                    </Link>
+                  </Button>
                 </div>
               </FadeIn>
             </div>

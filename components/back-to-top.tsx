@@ -3,57 +3,62 @@
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
 
 export function BackToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollPos > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+    const onScroll = () => {
+      // Check all possible scroll containers
+      const scrolled = Math.max(
+        window.scrollY,
+        document.documentElement.scrollTop,
+        document.body.scrollTop
+      );
+      setIsVisible(scrolled > 300);
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    // Listen on window, document, AND body — when both html+body have
+    // overflow-x:hidden, body becomes the scroll container and events
+    // only fire on body (not window/document) on desktop browsers.
+    window.addEventListener("scroll", onScroll, { passive: true });
+    document.addEventListener("scroll", onScroll, { passive: true });
+    document.body.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
-      window.removeEventListener("scroll", toggleVisibility);
+      window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("scroll", onScroll);
+      document.body.removeEventListener("scroll", onScroll);
     };
   }, []);
 
   const scrollToTop = () => {
-    const targets = [window, document.documentElement, document.body];
-    targets.forEach(target => {
-      try {
-        target.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      } catch (e) {
-        // Fallback for older browsers
-        if ('scrollTop' in target) {
-          (target as any).scrollTop = 0;
-        }
-      }
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.documentElement.scrollTop = 0;
   };
 
   return (
-    <Button
-      variant="outline"
-      size="icon"
-      className={cn(
-        "fixed bottom-8 right-8 z-50 rounded-md bg-background shadow-lg transition-all duration-300 hover:bg-accent",
-        isVisible ? "translate-y-0 opacity-100 pointer-events-auto" : "translate-y-16 opacity-0 pointer-events-none"
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          className="fixed bottom-8 right-8 z-[90]"
+          initial={{ opacity: 0, y: 64 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 64 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+        >
+          <Button
+            variant="outline"
+            size="icon"
+            className="size-10 rounded-md bg-background shadow-lg hover:bg-accent"
+            onClick={scrollToTop}
+            aria-label="Back to top"
+          >
+            <ArrowUp className="size-5" />
+          </Button>
+        </motion.div>
       )}
-      onClick={scrollToTop}
-      aria-label="Back to top"
-    >
-      <ArrowUp className="size-5" />
-    </Button>
+    </AnimatePresence>
   );
 }

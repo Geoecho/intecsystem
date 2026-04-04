@@ -12,6 +12,7 @@ const TiltCard = ({ children, className }: { children: React.ReactNode; classNam
   const ref = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     const card = ref.current;
     if (!card) return;
     const rect = card.getBoundingClientRect();
@@ -25,6 +26,7 @@ const TiltCard = ({ children, className }: { children: React.ReactNode; classNam
   };
 
   const handleMouseLeave = () => {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     if (ref.current) ref.current.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
   };
 
@@ -60,7 +62,7 @@ const Services4 = ({ className }: Services4Props) => {
 
   return (
     <section className={cn("py-20 md:py-32", className)}>
-      <div className="container mx-auto max-w-6xl px-6">
+      <div className="container mx-auto max-w-6xl">
         <div className="space-y-12">
           {/* Header */}
           <FadeIn>

@@ -34,11 +34,11 @@ const Banner5 = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "fixed bottom-4 left-0 right-0 z-[100] mx-auto max-w-7xl px-4 md:px-8",
+        "fixed bottom-4 left-0 right-0 z-[100] mx-auto max-w-6xl px-4 md:px-8",
         className,
       )}
     >
-      <div className="w-full rounded-xl border border-border bg-background/90 p-4 shadow-lg backdrop-blur-sm">
+      <div className="w-full rounded-xl border border-border bg-background p-4 shadow-lg">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-start gap-3">
             <Cookie className="mt-0.5 size-5 shrink-0 text-primary" />
@@ -48,7 +48,7 @@ const Banner5 = ({ className }: { className?: string }) => {
                 We use cookies to enhance your experience, analyze site traffic,
                 and for marketing. By clicking &quot;Accept&quot;, you consent
                 to our use of cookies.{" "}
-                <a href="/privacy" className="underline hover:text-foreground transition-colors">
+                <a href="/legal" className="underline hover:text-foreground transition-colors">
                   Learn more
                 </a>
               </p>
@@ -58,15 +58,13 @@ const Banner5 = ({ className }: { className?: string }) => {
           <div className="flex shrink-0 items-center gap-2">
             <Button
               variant="outline"
-              size="sm"
-              className="flex-1 sm:flex-none sm:w-auto"
+              className="h-10 flex-1 px-6 sm:flex-none"
               onClick={handleDecline}
             >
               Decline
             </Button>
             <Button
-              size="sm"
-              className="flex-1 sm:flex-none sm:w-auto"
+              className="h-10 flex-1 px-6 sm:flex-none"
               onClick={handleAccept}
             >
               Accept

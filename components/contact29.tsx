@@ -5,14 +5,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ArrowLeft,
   ArrowRight,
-  Building2,
   Check,
   HelpCircle,
-  Laptop,
   LoaderIcon,
-  Rocket,
-  Users,
 } from "lucide-react";
+import { SERVICES_DATA, SOLUTIONS_DATA } from "@/lib/services-data";
 import { useRef, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -32,6 +29,7 @@ const TiltCard = ({ children, className }: { children: React.ReactNode; classNam
   const ref = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     const card = ref.current;
     if (!card) return;
     const rect = card.getBoundingClientRect();
@@ -45,6 +43,7 @@ const TiltCard = ({ children, className }: { children: React.ReactNode; classNam
   };
 
   const handleMouseLeave = () => {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     if (ref.current) ref.current.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
   };
 
@@ -74,37 +73,30 @@ const contactFormSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
-const services = [
-  {
-    id: "security",
-    icon: Users,
-    title: "SecurePlus Fraud Shield",
-    description: "Defense against modern financial fraud",
-  },
-  {
-    id: "cyber",
-    icon: Laptop,
-    title: "Cyber Security",
-    description: "Secure frameworks for network visibility",
-  },
-  {
-    id: "infrastructure",
-    icon: Building2,
-    title: "HCI Solutions",
-    description: "Hyper-converged infrastructure solutions",
-  },
-  {
-    id: "consultancy",
-    icon: Rocket,
-    title: "IT Consultancy",
-    description: "Strategy and advisory services",
-  },
-  {
-    id: "other",
-    icon: HelpCircle,
-    title: "Other",
-    description: "Something else entirely",
-  },
+const CATEGORIES = [
+  { id: "all", label: "All" },
+  { id: "Cloud & Support", label: "Cloud & Support" },
+  { id: "Implementation & Consultancy", label: "Implementation" },
+  { id: "Automation & Dev", label: "Automation & Dev" },
+  { id: "Analysis & Recovery", label: "Analysis & Recovery" },
+  { id: "Solutions", label: "Solutions" },
+];
+
+const serviceItems = [
+  ...SERVICES_DATA.map((s) => ({
+    id: s.slug,
+    icon: s.icon,
+    title: s.title,
+    description: s.shortDescription,
+    category: s.category,
+  })),
+  ...SOLUTIONS_DATA.map((s) => ({
+    id: s.slug,
+    icon: s.icon,
+    title: s.title,
+    description: s.shortDescription,
+    category: "Solutions" as const,
+  })),
 ];
 
 interface Contact29Props {
@@ -129,6 +121,7 @@ const Contact29 = ({
 }: Contact29Props) => {
   const [step, setStep] = useState<"select" | "form" | "success">("select");
   const [selectedService, setSelectedService] = useState<string>("");
+  const [activeCategory, setActiveCategory] = useState("all");
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
@@ -180,7 +173,7 @@ const Contact29 = ({
   if (step === "success") {
     return (
       <section className={cn("relative py-20 md:py-32", className)}>
-        <motion.div {...animationProps} className="container mx-auto max-w-6xl px-6 flex flex-col justify-center">
+        <motion.div {...animationProps} className="container mx-auto max-w-6xl flex flex-col justify-center">
           <div className="mx-auto max-w-xl text-center">
             <div className="mx-auto mb-6 flex size-20 items-center justify-center rounded-full bg-green-500/10">
               <Check className="size-10 text-green-600" />
@@ -206,7 +199,7 @@ const Contact29 = ({
 
   return (
     <section className={cn("relative py-20 md:py-32", className)}>
-      <motion.div {...animationProps} className="container mx-auto max-w-6xl px-6 flex flex-col justify-center">
+      <motion.div {...animationProps} className="container mx-auto max-w-6xl flex flex-col justify-center">
         {step === "select" && (
           <div className="mx-auto w-full max-w-6xl">
             <div className="mb-12 text-center">
@@ -218,50 +211,73 @@ const Contact29 = ({
               </p>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {services.map((service) => {
-                const Icon = service.icon;
-                const isSelected = selectedService === service.id;
-                return (
-                  <TiltCard key={service.id} className="h-full">
-                    <button
-                      type="button"
-                      onClick={() => handleServiceSelect(service.id)}
-                      className={cn(
-                        "relative flex h-full w-full flex-col items-center rounded-md p-8 text-center transition-all backdrop-blur-sm",
-                        isSelected
-                          ? "bg-background ring-2 ring-primary"
-                          : "bg-background/80 border border-border hover:bg-background",
-                      )}
-                    >
-                      {isSelected && (
-                        <div className="absolute top-4 right-4 flex size-6 items-center justify-center rounded-full bg-primary">
-                          <Check className="size-4 text-primary-foreground" />
-                        </div>
-                      )}
-                      <div
+            {/* Category filter tabs */}
+            <div className="mb-8 flex flex-wrap gap-2 justify-center">
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={cn(
+                    "rounded-md px-4 py-2 text-sm font-medium transition-all",
+                    activeCategory === cat.id
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-muted/70 text-muted-foreground hover:bg-muted hover:text-foreground"
+                  )}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Service cards — always 2 cols; Other is appended so count is always even */}
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                ...serviceItems.filter((s) => activeCategory === "all" || s.category === activeCategory),
+                { id: "other", icon: HelpCircle, title: "Other", description: "Something else entirely", category: "" },
+              ].map((service) => {
+                  const Icon = service.icon;
+                  const isSelected = selectedService === service.id;
+                  return (
+                    <TiltCard key={service.id} className="h-full">
+                      <button
+                        type="button"
+                        onClick={() => handleServiceSelect(service.id)}
                         className={cn(
-                          "mb-4 flex size-14 items-center justify-center rounded-lg",
-                          isSelected ? "bg-primary/10" : "bg-muted",
+                          "relative flex h-full w-full flex-col items-center rounded-md p-8 text-center transition-all backdrop-blur-sm",
+                          isSelected
+                            ? "bg-background ring-2 ring-primary"
+                            : "bg-background/80 border border-border hover:bg-background",
                         )}
                       >
-                        <Icon
+                        {isSelected && (
+                          <div className="absolute top-4 right-4 flex size-6 items-center justify-center rounded-full bg-primary">
+                            <Check className="size-4 text-primary-foreground" />
+                          </div>
+                        )}
+                        <div
                           className={cn(
-                            "size-7",
-                            isSelected ? "text-primary" : "text-muted-foreground",
+                            "mb-4 flex size-14 items-center justify-center rounded-lg",
+                            isSelected ? "bg-primary/10" : "bg-muted",
                           )}
-                        />
-                      </div>
-                      <h3 className="mb-2 text-lg font-semibold">
-                        {service.title}
-                      </h3>
-                      <p className="text-muted-foreground">
-                        {service.description}
-                      </p>
-                    </button>
-                  </TiltCard>
-                );
-              })}
+                        >
+                          <Icon
+                            className={cn(
+                              "size-7",
+                              isSelected ? "text-primary" : "text-muted-foreground",
+                            )}
+                          />
+                        </div>
+                        <h3 className="mb-2 text-lg font-semibold">
+                          {service.title}
+                        </h3>
+                        <p className="text-muted-foreground">
+                          {service.description}
+                        </p>
+                      </button>
+                    </TiltCard>
+                  );
+                })}
             </div>
 
             <div className="mt-12 flex justify-center">
@@ -279,8 +295,9 @@ const Contact29 = ({
         )}
 
         {step === "form" && (
-          <div className="mx-auto w-full max-w-6xl grid gap-16 lg:grid-cols-2 lg:gap-24 lg:items-start">
-            <div className="flex flex-col justify-start">
+          <div className="w-full flex flex-col gap-10">
+            {/* Header — text on top */}
+            <div>
               <button
                 type="button"
                 onClick={() => setStep("select")}
@@ -290,124 +307,60 @@ const Contact29 = ({
                 Change selection
               </button>
 
-              <h1 className="mb-6 text-3xl font-semibold tracking-tighter md:text-4xl lg:text-5xl">
+              <h1 className="mb-4 text-3xl font-semibold tracking-tighter md:text-4xl lg:text-5xl">
                 Tell Us More
               </h1>
-              <p className="mb-12 text-lg text-muted-foreground">
+              <p className="mb-8 text-lg text-muted-foreground">
                 Share the details of your project and we&apos;ll get back to you
                 within 24 hours.
               </p>
 
-              <div className="flex items-center gap-4 rounded-md border border-border bg-background/80 p-6 backdrop-blur-sm">
-                {(() => {
-                  const service = services.find(
-                    (s) => s.id === selectedService,
-                  );
-                  if (!service) return null;
-                  const Icon = service.icon;
-                  return (
-                    <>
-                      <div className="flex size-12 items-center justify-center rounded-lg bg-primary/10">
-                        <Icon className="size-6 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-lg font-semibold">{service.title}</p>
-                        <p className="text-muted-foreground">
-                          {service.description}
-                        </p>
-                      </div>
-                    </>
-                  );
-                })()}
-              </div>
+              {/* Selected service summary */}
+              {(() => {
+                const allItems = [
+                  ...serviceItems,
+                  { id: "other", icon: HelpCircle, title: "Other", description: "Something else entirely", category: "" },
+                ];
+                const service = allItems.find((s) => s.id === selectedService);
+                if (!service) return null;
+                const Icon = service.icon;
+                return (
+                  <div className="flex items-center gap-4 rounded-md border border-border bg-background/80 p-5 backdrop-blur-sm">
+                    <div className="flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                      <Icon className="size-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-semibold">{service.title}</p>
+                      <p className="text-sm text-muted-foreground">{service.description}</p>
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
 
-            <div className="flex items-center">
-              <form
-                onSubmit={form.handleSubmit(handleFormSubmit)}
-                className="w-full rounded-md border border-border bg-background/80 p-8 backdrop-blur-sm md:p-10"
-              >
-                <h2 className="mb-8 text-2xl font-semibold">Your Details</h2>
+            {/* Full-width form below */}
+            <form
+              onSubmit={form.handleSubmit(handleFormSubmit)}
+              className="w-full rounded-md border border-border bg-background/80 p-8 backdrop-blur-sm md:p-10"
+            >
+              <h2 className="mb-8 text-2xl font-semibold">Your Details</h2>
 
-                <FieldGroup>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <Controller
-                      control={form.control}
-                      name="name"
-                      render={({ field, fieldState }) => (
-                        <Field data-invalid={fieldState.invalid}>
-                          <FieldLabel htmlFor={field.name}>
-                            Name <span className="text-destructive">*</span>
-                          </FieldLabel>
-                          <Input
-                            {...field}
-                            id={field.name}
-                            aria-invalid={fieldState.invalid}
-                            placeholder="Your name"
-                            className="rounded-md px-4 h-12"
-                          />
-                          {fieldState.invalid && (
-                            <FieldError errors={[fieldState.error]} />
-                          )}
-                        </Field>
-                      )}
-                    />
-
-                    <Controller
-                      control={form.control}
-                      name="email"
-                      render={({ field, fieldState }) => (
-                        <Field data-invalid={fieldState.invalid}>
-                          <FieldLabel htmlFor={field.name}>
-                            Email <span className="text-destructive">*</span>
-                          </FieldLabel>
-                          <Input
-                            {...field}
-                            id={field.name}
-                            type="email"
-                            aria-invalid={fieldState.invalid}
-                            placeholder="you@example.com"
-                            className="rounded-md px-4 h-12"
-                          />
-                          {fieldState.invalid && (
-                            <FieldError errors={[fieldState.error]} />
-                          )}
-                        </Field>
-                      )}
-                    />
-                  </div>
-
+              <FieldGroup>
+                <div className="grid gap-4 sm:grid-cols-2">
                   <Controller
                     control={form.control}
-                    name="company"
-                    render={({ field }) => (
-                      <Field>
-                        <FieldLabel htmlFor={field.name}>Company</FieldLabel>
-                        <Input
-                          {...field}
-                          id={field.name}
-                          placeholder="Your company"
-                          className="rounded-md px-4 h-12"
-                        />
-                      </Field>
-                    )}
-                  />
-
-                  <Controller
-                    control={form.control}
-                    name="message"
+                    name="name"
                     render={({ field, fieldState }) => (
                       <Field data-invalid={fieldState.invalid}>
                         <FieldLabel htmlFor={field.name}>
-                          Message <span className="text-destructive">*</span>
+                          Name <span className="text-destructive">*</span>
                         </FieldLabel>
-                        <Textarea
+                        <Input
                           {...field}
                           id={field.name}
                           aria-invalid={fieldState.invalid}
-                          placeholder="Tell us about your project..."
-                          rows={5}
-                          className="rounded-md px-4 py-4"
+                          placeholder="Your name"
+                          className="rounded-md px-4 h-12"
                         />
                         {fieldState.invalid && (
                           <FieldError errors={[fieldState.error]} />
@@ -416,32 +369,94 @@ const Contact29 = ({
                     )}
                   />
 
-                  {form.formState.errors.root && (
-                    <p className="text-sm text-destructive">
-                      {form.formState.errors.root.message}
-                    </p>
-                  )}
-
-                  <Button
-                    size="lg"
-                    className="group flex h-12 w-full items-center justify-center gap-2 rounded-md px-10 text-base tracking-tight"
-                    disabled={form.formState.isSubmitting}
-                  >
-                    {form.formState.isSubmitting ? (
-                      <>
-                        <LoaderIcon className="mr-2 size-4 animate-spin" />
-                        <span>Sending...</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>Send Message</span>
-                        <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
-                      </>
+                  <Controller
+                    control={form.control}
+                    name="email"
+                    render={({ field, fieldState }) => (
+                      <Field data-invalid={fieldState.invalid}>
+                        <FieldLabel htmlFor={field.name}>
+                          Email <span className="text-destructive">*</span>
+                        </FieldLabel>
+                        <Input
+                          {...field}
+                          id={field.name}
+                          type="email"
+                          aria-invalid={fieldState.invalid}
+                          placeholder="you@example.com"
+                          className="rounded-md px-4 h-12"
+                        />
+                        {fieldState.invalid && (
+                          <FieldError errors={[fieldState.error]} />
+                        )}
+                      </Field>
                     )}
-                  </Button>
-                </FieldGroup>
-              </form>
-            </div>
+                  />
+                </div>
+
+                <Controller
+                  control={form.control}
+                  name="company"
+                  render={({ field }) => (
+                    <Field>
+                      <FieldLabel htmlFor={field.name}>Company</FieldLabel>
+                      <Input
+                        {...field}
+                        id={field.name}
+                        placeholder="Your company"
+                        className="rounded-md px-4 h-12"
+                      />
+                    </Field>
+                  )}
+                />
+
+                <Controller
+                  control={form.control}
+                  name="message"
+                  render={({ field, fieldState }) => (
+                    <Field data-invalid={fieldState.invalid}>
+                      <FieldLabel htmlFor={field.name}>
+                        Message <span className="text-destructive">*</span>
+                      </FieldLabel>
+                      <Textarea
+                        {...field}
+                        id={field.name}
+                        aria-invalid={fieldState.invalid}
+                        placeholder="Tell us about your project..."
+                        rows={5}
+                        className="rounded-md px-4 py-4"
+                      />
+                      {fieldState.invalid && (
+                        <FieldError errors={[fieldState.error]} />
+                      )}
+                    </Field>
+                  )}
+                />
+
+                {form.formState.errors.root && (
+                  <p className="text-sm text-destructive">
+                    {form.formState.errors.root.message}
+                  </p>
+                )}
+
+                <Button
+                  size="lg"
+                  className="group flex h-12 w-full items-center justify-center gap-2 rounded-md px-10 text-base tracking-tight"
+                  disabled={form.formState.isSubmitting}
+                >
+                  {form.formState.isSubmitting ? (
+                    <>
+                      <LoaderIcon className="mr-2 size-4 animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Send Message</span>
+                      <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
+                    </>
+                  )}
+                </Button>
+              </FieldGroup>
+            </form>
           </div>
         )}
       </motion.div>
